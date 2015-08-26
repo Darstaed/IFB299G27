@@ -1,0 +1,38 @@
+#page {
+    padding: 60px;
+}
+
+
+#footer {
+    border-top: 1px solid #C9E0ED;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    clear: both;
+}
+
+
+#leftcontainer{
+	display: block;
+	margin-top: 60px;
+	margin-bottom: 60px;
+	width: 70%;
+}
+
+#rightcontainer{
+	margin-top: 60px;
+	margin-right: 150px;
+	margin-bottom: 60px;
+	display: inline;
+	float: right;
+}
+
+.footermenu {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+.footermenu li {
+    display: inline;
+}
