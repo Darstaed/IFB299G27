@@ -1,0 +1,3045 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>SEF Jira</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\.";
+    mso-displayed-thousand-separator:"\,";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#205081" height="30">
+        <td colspan="41">
+            <img src="https://sefteach01.qut.edu.au/jira/images/icon-jira-logo.png" width="57" height="30" border="0" alt="SEF Jira">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="41">
+            <a href="https://sefteach01.qut.edu.au/jira/secure/IssueNavigator.jspa?reset=true&jqlQuery=project+%3D+TWOSEV">SEF Jira</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="41">
+            Displaying <strong>39</strong> issues at <strong>26/Aug/15 5:25 PM</strong>.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                                        <table id="issuetable"  border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                            Project
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                            Key
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                            Summary
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                            Issue Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                            Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                            Priority
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                            Resolution
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                            Assignee
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                            Reporter
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                            Creator
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                            Created
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                            Last Viewed
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                            Updated
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                            Resolved
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                            Affects Version/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                            Fix Version/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                            Component/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                            Due Date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                            Votes
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                            Watchers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                            Images
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                            Original Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                            Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                            Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                            Work Ratio
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                            Sub-Tasks
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                            Linked Issues
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                            Environment
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                            Description
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                            Security Level
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                            Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                            Σ Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                            Σ Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                            Σ Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                            Σ Original Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                            Labels
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10009" data-id="customfield_10009">
+                            Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10005" data-id="customfield_10005">
+                            Epic Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10001" data-id="customfield_10001">
+                            Epic/Theme
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10004" data-id="customfield_10004">
+                            Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                            Flagged
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow14153" rel="14153" data-issuekey="TWOSEV-41" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-41" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-41">TWOSEV-41</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer, I can have my information automatically filled out in forms
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Trivial
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Daniel Bogaart
+    </td>
+                                            <td class="creator">            Daniel Bogaart
+    </td>
+                                            <td class="created"> 26/Aug/15 5:19 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 5:25 PM </td>
+                                            <td class="updated"> 26/Aug/15 5:19 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">28800</td>
+                                            <td class="timeestimate">28800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Forms on the website should be automatically filled with the information on the account
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">28800</td>
+                                            <td class="aggregatetimeoriginalestimate">28800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms89:i
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14134" rel="14134" data-issuekey="TWOSEV-40" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-40" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-40">TWOSEV-40</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer the website design is appealing
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 26/Aug/15 3:24 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 4:42 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:37 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The website design should appear aesthetically pleasing to customers.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbq:v
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14133" rel="14133" data-issuekey="TWOSEV-39" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-39" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-39">TWOSEV-39</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can easily navigate the website
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 26/Aug/15 3:24 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:29 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The website should be user-friendly, welcoming and easy to navigate for customers.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbq:r
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14132" rel="14132" data-issuekey="TWOSEV-38" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-38" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-38">TWOSEV-38</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager I can upload photos to property listing
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 26/Aug/15 2:51 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:08 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A property manager should be able to upload photos of property to listing for user to see.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms8q:i
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 2: Basic Features</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14131" rel="14131" data-issuekey="TWOSEV-37" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-37" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-37">TWOSEV-37</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can see pictures of the property
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 26/Aug/15 2:50 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:07 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A customer should be able to see some pictures of the property on the webpage.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms8q:r
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 2: Basic Features</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14130" rel="14130" data-issuekey="TWOSEV-36" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-36" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-36">TWOSEV-36</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can search for a property via its ID number on gumtree
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 26/Aug/15 2:49 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:09 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Gumtree should have a search function which allows customers to easily find properties when entering its ID.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms89:0i
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14123" rel="14123" data-issuekey="TWOSEV-35" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-35" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-35">TWOSEV-35</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can search for properties near a location.
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 26/Aug/15 2:01 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:47 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:14 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">120</td>
+                                            <td class="timeestimate">120</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Customers should be able to find results for properties near a given suburb.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">120</td>
+                                            <td class="aggregatetimeoriginalestimate">120</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms9n:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13275" rel="13275" data-issuekey="TWOSEV-33" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-33" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-33">TWOSEV-33</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can view a webpage detailing a property
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 4:04 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 2:52 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">14400</td>
+                                            <td class="timeestimate">288000</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Customers should be able to view the details of a property on a webpage. The webpage should display the information of a property to the customer.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">288000</td>
+                                            <td class="aggregatetimeoriginalestimate">14400</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms76:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13272" rel="13272" data-issuekey="TWOSEV-32" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-32" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-32">TWOSEV-32</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can edit user privileges 
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:53 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:27 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      An administrator should be able to do everything a property manager can do such as listing contact details and editing the property information.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmslv:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 4: Administration, Misc</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13271" rel="13271" data-issuekey="TWOSEV-31" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-31" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-31">TWOSEV-31</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager I can do everything a customer can do
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:53 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:19 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">14400</td>
+                                            <td class="timeestimate">14400</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A property manager should be able to do everything customer can do such as access to account and pricing of property and be able to search for property.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">14400</td>
+                                            <td class="aggregatetimeoriginalestimate">14400</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbq:i
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13269" rel="13269" data-issuekey="TWOSEV-30" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-30" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-30">TWOSEV-30</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can view the website
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Closed
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Kwan Ho Cheng
+    </td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:52 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 4:00 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:40 PM </td>
+                                            <td class="resolutiondate"> 26/Aug/15 3:40 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">57600</td>
+                                            <td class="timeestimate">57600</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The skeleton of the website can be viewed by the customer / user / property manager / administrator
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">57600</td>
+                                            <td class="aggregatetimeoriginalestimate">57600</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms6j:i
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13268" rel="13268" data-issuekey="TWOSEV-29" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-29" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-29">TWOSEV-29</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager I can view the contact details for tenants
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:50 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:45 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:49 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">14400</td>
+                                            <td class="timeestimate">14400</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A property manage should be able to view the contact details for tenants in order to provide communication between tenants and property owner.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">14400</td>
+                                            <td class="aggregatetimeoriginalestimate">14400</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbq:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13255" rel="13255" data-issuekey="TWOSEV-28" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-28" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-28">TWOSEV-28</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can take the website offline
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Closed
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Matthew Baker
+    </td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:43 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:35 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:45 PM </td>
+                                            <td class="resolutiondate"> 26/Aug/15 3:45 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">10800</td>
+                                            <td class="timeestimate">10800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The website is available offline for the administrator and can be altered or changed to the administrators liking 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">10800</td>
+                                            <td class="aggregatetimeoriginalestimate">10800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms6k:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13254" rel="13254" data-issuekey="TWOSEV-27" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-27" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-27">TWOSEV-27</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can contact users via the website
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:42 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:48 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:14 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">240</td>
+                                            <td class="timeestimate">240</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The administrator should be able to send a user an email, showing interest in the house or property
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">240</td>
+                                            <td class="aggregatetimeoriginalestimate">240</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms97:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13253" rel="13253" data-issuekey="TWOSEV-26" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-26" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-26">TWOSEV-26</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can view user contact details
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:42 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:48 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:14 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">120</td>
+                                            <td class="timeestimate">120</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The administrator should be able to see the contact information including the email, phone number and possibly a Facebook link, to be able to easily contact the user or customer
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">120</td>
+                                            <td class="aggregatetimeoriginalestimate">120</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsb1:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13251" rel="13251" data-issuekey="TWOSEV-25" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-25" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-25">TWOSEV-25</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can block IP addresses from creating new listings
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:41 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:50 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:29 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">300</td>
+                                            <td class="timeestimate">300</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      If a user is hacking or using the website in the wrong manner, the administrator should be able to block the user from accessing the website or adding any properties to the website
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">300</td>
+                                            <td class="aggregatetimeoriginalestimate">300</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsm9:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 4: Administration, Misc</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13248" rel="13248" data-issuekey="TWOSEV-24" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-24" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-24">TWOSEV-24</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can delete users
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:41 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:45 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:07 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">28800</td>
+                                            <td class="timeestimate">28800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      An administrator can edit user account details and delete users if needed. A banned user may be deleted by the administrator.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">28800</td>
+                                            <td class="aggregatetimeoriginalestimate">28800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbr:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 4: Administration, Misc</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13247" rel="13247" data-issuekey="TWOSEV-23" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-23" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-23">TWOSEV-23</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can ban users
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:40 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:07 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">28800</td>
+                                            <td class="timeestimate">28800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      If users abuse their account and violate the policy, their accounts may be banned by the administrator.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">28800</td>
+                                            <td class="aggregatetimeoriginalestimate">28800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbs:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 4: Administration, Misc</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13246" rel="13246" data-issuekey="TWOSEV-22" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-22" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-22">TWOSEV-22</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can edit listings
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:40 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:12 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">57600</td>
+                                            <td class="timeestimate">57600</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      An administrator can edit and update pages of property on the webpage at any time
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">57600</td>
+                                            <td class="aggregatetimeoriginalestimate">57600</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms8o:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 2: Basic Features</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13241" rel="13241" data-issuekey="TWOSEV-20" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-20" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-20">TWOSEV-20</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager I can be contacted via the website
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Could Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:38 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:26 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">120</td>
+                                            <td class="timeestimate">120</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A property manager should easily be able to be contacted by anyone, including users, customers, other property managers and admins.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">120</td>
+                                            <td class="aggregatetimeoriginalestimate">120</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbt:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 4: Administration, Misc</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13240" rel="13240" data-issuekey="TWOSEV-19" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-19" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-19">TWOSEV-19</a>
+</td>
+                                            <td class="summary"><p>
+                As an administrator I can edit the web application
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Closed
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Matthew Baker
+    </td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:37 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 4:42 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:46 PM </td>
+                                            <td class="resolutiondate"> 26/Aug/15 3:46 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">10800</td>
+                                            <td class="timeestimate">10800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      An administrator should be able to add new page of information to the webpage 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">10800</td>
+                                            <td class="aggregatetimeoriginalestimate">10800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms6j:9
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13239" rel="13239" data-issuekey="TWOSEV-18" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-18" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-18">TWOSEV-18</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager I can schedule times for customers to inspect my properties
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:37 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:58 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:53 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">240</td>
+                                            <td class="timeestimate">240</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Communication can be done with interested customers to come and inspect the property. The property manager can also list this on the website, if he/she so desires
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">240</td>
+                                            <td class="aggregatetimeoriginalestimate">240</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbl:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13236" rel="13236" data-issuekey="TWOSEV-17" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-17" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-17">TWOSEV-17</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager I can list contact information on my listings
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:36 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 2:50 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">10800</td>
+                                            <td class="timeestimate">10800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A property manager should be able to list contact details of property owner on the listing for tenants to contact them.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">10800</td>
+                                            <td class="aggregatetimeoriginalestimate">10800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbb:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13232" rel="13232" data-issuekey="TWOSEV-16" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-16" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-16">TWOSEV-16</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can compare two properties
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Could Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:33 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 2:53 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">240</td>
+                                            <td class="timeestimate">240</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A customer should easily be able to see the differences in features between two properties such as their price, area, number of bedrooms, bathrooms and garages.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">240</td>
+                                            <td class="aggregatetimeoriginalestimate">240</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmscz:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 4: Administration, Misc</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13229" rel="13229" data-issuekey="TWOSEV-15" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-15" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-15">TWOSEV-15</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can contact the agent managing a property via the website
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:33 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 4:13 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">7200</td>
+                                            <td class="timeestimate">7200</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A customer should be easily able to view a managing agent&#39;s details and contact the agent via the site.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">7200</td>
+                                            <td class="aggregatetimeoriginalestimate">7200</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms8n:i
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 2: Basic Features</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13227" rel="13227" data-issuekey="TWOSEV-14" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-14" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-14">TWOSEV-14</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can see recommendations based of previous searches
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Could Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:32 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 2:53 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">300</td>
+                                            <td class="timeestimate">300</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The customer should be given recommendations of similar properties of interest in terms of pricing, location, area, etc.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">300</td>
+                                            <td class="aggregatetimeoriginalestimate">300</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsbv:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 4: Administration, Misc</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13224" rel="13224" data-issuekey="TWOSEV-13" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-13" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-13">TWOSEV-13</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager I can use my account to edit my listings
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:31 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 26/Aug/15 3:13 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">21600</td>
+                                            <td class="timeestimate">21600</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Property managers should be able to remove their listings at any time for any reason.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">21600</td>
+                                            <td class="aggregatetimeoriginalestimate">21600</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms8q:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 2: Basic Features</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13222" rel="13222" data-issuekey="TWOSEV-12" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-12" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-12">TWOSEV-12</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager, I can use my account to edit listings
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:30 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 3:59 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:48 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">21600</td>
+                                            <td class="timeestimate">21600</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The property manager should be able to change the details of listings such as price, location and contact information.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">21600</td>
+                                            <td class="aggregatetimeoriginalestimate">21600</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywmsar:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 3: Design &amp; Interface</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13221" rel="13221" data-issuekey="TWOSEV-11" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-11" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-11">TWOSEV-11</a>
+</td>
+                                            <td class="summary"><p>
+                As a property manager, I can use my account to create listings
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:30 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 5:05 PM </td>
+                                            <td class="updated"> 26/Aug/15 5:05 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">32400</td>
+                                            <td class="timeestimate">32400</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      If you are logged in to the website, you should be able to add a house with prices, photos, no. of bedrooms/bathrooms/garages, etc.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">32400</td>
+                                            <td class="aggregatetimeoriginalestimate">32400</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms6n:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13219" rel="13219" data-issuekey="TWOSEV-10" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-10" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-10">TWOSEV-10</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can create an account
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Won&#39;t Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:30 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 4:41 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:11 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">21600</td>
+                                            <td class="timeestimate">21600</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A login/register button needs to be available for viewing on the home screen to make it as easy as possible to sign up
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">21600</td>
+                                            <td class="aggregatetimeoriginalestimate">21600</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms8a:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13217" rel="13217" data-issuekey="TWOSEV-9" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-9" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-9">TWOSEV-9</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can see information about the agent managing a property
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:29 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 3:35 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:50 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">14400</td>
+                                            <td class="timeestimate">14400</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Agent details (Name, email address and the phone number perhaps) will be able to be viewed by a customer to be able to contact if needed
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">14400</td>
+                                            <td class="aggregatetimeoriginalestimate">14400</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms89:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13216" rel="13216" data-issuekey="TWOSEV-8" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-8" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-8">TWOSEV-8</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can see the number of carports a property has
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:29 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:52 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:12 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">60</td>
+                                            <td class="timeestimate">60</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      The number of carports a house has can be chosen to limit the search
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">60</td>
+                                            <td class="aggregatetimeoriginalestimate">60</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms88:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13215" rel="13215" data-issuekey="TWOSEV-7" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-7" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-7">TWOSEV-7</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can see the number of bathrooms for a property
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:28 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 3:30 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:50 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">7200</td>
+                                            <td class="timeestimate">7200</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Customers must be able to see the number of bathrooms a property has
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">7200</td>
+                                            <td class="aggregatetimeoriginalestimate">7200</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms87:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13214" rel="13214" data-issuekey="TWOSEV-6" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-6" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-6">TWOSEV-6</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can search for a property base on the number of bathrooms
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Should Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:26 PM </td>
+                                            <td class="lastViewed"> 26/Aug/15 2:52 PM </td>
+                                            <td class="updated"> 26/Aug/15 3:03 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">120</td>
+                                            <td class="timeestimate">120</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A customer should be able to refine their search by the number of bathrooms a property has.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">120</td>
+                                            <td class="aggregatetimeoriginalestimate">120</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms8j:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 2: Basic Features</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13212" rel="13212" data-issuekey="TWOSEV-5" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-5" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-5">TWOSEV-5</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can search for a property based on the number of bedrooms
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:25 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 3:30 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:51 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">21600</td>
+                                            <td class="timeestimate">21600</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Number of bedrooms will come up within a drop down box and will give the ability to shorten the search
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">21600</td>
+                                            <td class="aggregatetimeoriginalestimate">21600</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms8n:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 2: Basic Features</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13210" rel="13210" data-issuekey="TWOSEV-4" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-4" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-4">TWOSEV-4</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can see the number of bedrooms for a property
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:23 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 3:30 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:51 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">10800</td>
+                                            <td class="timeestimate">10800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Customers should be able to see the number of bedrooms each property has
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">10800</td>
+                                            <td class="aggregatetimeoriginalestimate">10800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms83:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13208" rel="13208" data-issuekey="TWOSEV-3" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-3" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-3">TWOSEV-3</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can view the price of properties
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:22 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 3:30 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:52 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">10800</td>
+                                            <td class="timeestimate">10800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Customers should be able to see the listed price for properties
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">10800</td>
+                                            <td class="aggregatetimeoriginalestimate">10800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms7n:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13207" rel="13207" data-issuekey="TWOSEV-2" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-2" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-2">TWOSEV-2</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can see the location for each property
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 3:21 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 3:30 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:52 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">10800</td>
+                                            <td class="timeestimate">10800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      When searching or viewing properties users should be able to see the location.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">10800</td>
+                                            <td class="aggregatetimeoriginalestimate">10800</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms7v:
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 1: Core Functionality</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13204" rel="13204" data-issuekey="TWOSEV-1" class="issuerow">
+                                            <td class="project">    IFB299 027
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TWOSEV-1" href="https://sefteach01.qut.edu.au/jira/browse/TWOSEV-1">TWOSEV-1</a>
+</td>
+                                            <td class="summary"><p>
+                As a customer I can search for a property based on its location
+    </p>
+</td>
+                                            <td class="issuetype"> Story</td>
+                                            <td class="status">
+                Open
+    </td>
+                                            <td class="priority">   Must Have
+</td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            Matthew Baker
+    </td>
+                                            <td class="creator">            Matthew Baker
+    </td>
+                                            <td class="created"> 19/Aug/15 2:38 PM </td>
+                                            <td class="lastViewed"> 19/Aug/15 4:01 PM </td>
+                                            <td class="updated"> 26/Aug/15 2:52 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">32400</td>
+                                            <td class="timeestimate">32400</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      A user should be able to search for properties based on its *location* 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">32400</td>
+                                            <td class="aggregatetimeoriginalestimate">32400</td>
+                                            <td class="labels">    </td>
+                                            <td class="customfield_10009">      0|ywms89:1
+  </td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10001">    </td>
+                                            <td class="customfield_10004">Sprint 2: Basic Features</td>
+                                            <td class="customfield_10000">
+
+
+</td>
+                    </tr>
+                </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="41"><font size="1">
+        Generated at Wed Aug 26 17:25:12 EST 2015 by Daniel Bogaart using JIRA 6.2.7#6265-sha1:91604a8de81892a3e362e0afee505432f29579b0.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
