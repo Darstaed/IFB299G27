@@ -7,5 +7,5 @@ $message = wordwrap($message, 70, "\r\n");
 ini_set( "SMTP", "172.16.1.3" );
 ini_set( "smtp_port", 25 );
 // Send
-mail('matt.dbker@gmail.com', 'My Subject', $message);
+mail('test@example.com', 'My Subject', $message);
 ?>
