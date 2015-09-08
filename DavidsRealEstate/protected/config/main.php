@@ -57,7 +57,7 @@
 
 				    //Establishing connection for sqlite db.
                    'db'=>array(
-            'connectionString'=>'sqlite:protected/data/blog.db',
+            'connectionString'=>'sqlite:protected/data/davidDB.db',
             'tablePrefix'=>'tbl_',
         ),
 

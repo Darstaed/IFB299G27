@@ -8,21 +8,8 @@
     </div>
     <div class="span3">
         <div id="sidebar">
-        <?php
-        	if(!Yii::app()->user->isGuest) 
-        		$this->widget('UserMenu'); // display user menu if user
-
-        	if(!Yii::app()->user->isGuest) 
-        		$this->widget('TagCloud', 
-            		array(
-        				'maxTags'=>Yii::app()->params['tagCloudCount'],
-    				)
-    			);
-    			; 
-        	
-        	
-        ?>
-        </div><!-- sidebar -->
+		<?php if(!Yii::app()->user->isGuest) $this->widget('UserMenu'); ?>
+        </div><!-- sidebar --> 
     </div>
 </div>
 <?php $this->endContent(); ?>

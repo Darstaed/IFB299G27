@@ -15,6 +15,7 @@ $this->pageTitle=Yii::app()->name;
         'type'=>'primary',
         'size'=>'large',
         'label'=>'Learn more',
+		'url'=>array('propertylisting/index'),
     )); ?></p>
  
 <?php $this->endWidget(); ?>
