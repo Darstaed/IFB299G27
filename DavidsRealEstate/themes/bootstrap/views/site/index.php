@@ -10,11 +10,11 @@ $this->pageTitle=Yii::app()->name;
     'heading'=>'Find a Property',
 )); ?>
  
-    <p>Use the map to find a property to rent</p>
+    <p>Click the button below to view davids realestate property listings</p>
     <p><?php $this->widget('bootstrap.widgets.TbButton', array(
         'type'=>'primary',
         'size'=>'large',
-        'label'=>'Learn more',
+        'label'=>'View Property Listings',
 		'url'=>array('propertylisting/index'),
     )); ?></p>
  
