@@ -36,7 +36,7 @@ CREATE TABLE tbl_gallery
 -- -----------------------------------------------------	
 CREATE TABLE tbl_propertylisting 
 (
-	propertyID INTEGER NOT NULL PRIMARY KEY,
+	propertyID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	address VARCHAR(255) NOT NULL,
 	rent DECIMAL(4,2) NOT NULL,
 	rentfreq VARCHAR(15) NOT NULL,

@@ -8,7 +8,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Create Property listing', 'url'=>array('create')),
-	array('label'=>'Manage Property listing', 'url'=>array('admin')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
