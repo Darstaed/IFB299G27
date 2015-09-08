@@ -25,6 +25,7 @@ $this->menu=array(
 	echo $author -> firstname;
 	echo ' ';
 	echo $author -> surname;
+	echo ' ';
 	echo $author ->  email;
 ?>
 

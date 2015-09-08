@@ -122,13 +122,19 @@ class PropertylistingController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$model=new Propertylisting('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Propertylisting']))
+			$model->attributes=$_GET['Propertylisting'];
+	
 		$criteria=new CDbCriteria(array('with'=>'author'));
 	
 		$dataProvider=new CActiveDataProvider('Propertylisting', array('pagination'=>array('pageSize'=>5,), 'criteria'=>$criteria));
 		
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+        'dataProvider'=>$model->search(),
+        'model'=>$model)
+		);
 	}
 	
 
@@ -139,6 +145,7 @@ class PropertylistingController extends Controller
 	{
 		$model=new Propertylisting('search');
 		$model->unsetAttributes();  // clear any default values
+		
 		if(isset($_GET['Propertylisting']))
 			$model->attributes=$_GET['Propertylisting'];
 
