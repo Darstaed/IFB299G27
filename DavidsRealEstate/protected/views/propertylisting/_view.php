@@ -63,6 +63,8 @@
 	<?php echo CHtml::encode($data->imageID); ?>
 	<br />
 	
+	<b><br/>
+	
 
 	 
 
