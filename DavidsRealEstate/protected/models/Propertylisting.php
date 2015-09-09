@@ -42,6 +42,7 @@ class Propertylisting extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('address', 'unique'),
 			array('address, rent, rentfreq', 'required'),
 			array('numBathroom, numBedroom, numCarPorts, authorID, rent', 'numerical', 'integerOnly'=>true),
 			array('address, imageID', 'length', 'max'=>255),
