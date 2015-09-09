@@ -113,7 +113,7 @@ class Propertylisting extends CActiveRecord
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('rent',$this->rent,true);
 		$criteria->compare('rentfreq',$this->rentfreq,true);
-		$criteria->compare('numBathroom',$this->numBathroom, false, '<=');
+		$criteria->compare('numBathroom',$this->numBathroom, false, '<=:');
 		$criteria->compare('numBedroom',$this->numBedroom);
 		$criteria->compare('numCarPorts',$this->numCarPorts);
 		$criteria->compare('createTime',$this->createTime,true);
