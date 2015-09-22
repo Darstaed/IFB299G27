@@ -9204,3 +9204,48 @@ Stack trace:
 REQUEST_URI=/DavidsRealEstate/index.php/propertylisting/admin
 HTTP_REFERER=http://localhost/DavidsRealEstate/index.php/propertylisting/651651
 ---
+2015/09/22 03:57:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#9 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/IFB299G27/DavidsRealEstate/index.php/propertylisting/admin
+HTTP_REFERER=http://localhost/IFB299G27/DavidsRealEstate/index.php
+---
+2015/09/22 04:05:57 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#9 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/IFB299G27/DavidsRealEstate/index.php/propertylisting/admin
+HTTP_REFERER=http://localhost/IFB299G27/DavidsRealEstate/index.php
+---
+2015/09/22 05:01:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "42 villa st".' in C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CController.php:483
+Stack trace:
+#0 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CController.php(270): CController->missingAction('42 villa st')
+#1 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('42 villa st')
+#2 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#3 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\Program Files (x86)\wamp\www\IFB299G27\DavidsRealEstate\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/IFB299G27/DavidsRealEstate/index.php/propertylisting/42+villa+st
+HTTP_REFERER=http://localhost/IFB299G27/DavidsRealEstate/index.php/propertylisting/index
+---
