@@ -32,17 +32,17 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'numBathroom'); ?>
+		<?php echo $form->label($model,"Minimum ".'numBathroom'); ?>
 		<?php echo $form->textField($model,'numBathroom'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'numBedroom'); ?>
+		<?php echo $form->label($model,"Minimum ".'numBedroom'); ?>
 		<?php echo $form->textField($model,'numBedroom'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'numCarPorts'); ?>
+		<?php echo $form->label($model,"Minimum ".'numCarPorts'); ?>
 		<?php echo $form->textField($model,'numCarPorts'); ?>
 	</div>
 

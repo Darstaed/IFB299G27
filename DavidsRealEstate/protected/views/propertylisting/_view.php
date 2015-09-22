@@ -5,29 +5,36 @@
 
 <div class="view">
 	
+	<h4>
+	<br />
+	<?php echo CHtml::link($data->address, CHtml::encode($data->propertyID)); ?>
+	</h4>
 	
 	<b><?php echo 'Property Manager: ' ?></b>
 	<?php echo Chtml::encode($data->author->firstname); ?>
 	<?php echo Chtml::encode($data->author->surname); ?>
 	</br>
 	
-	<b><?php echo 'Phone Number: ' ?></b>
-	<?php echo Chtml::encode($data->author->phoneNumber); ?>
-	</br>
+	<?php if ($data->author->phoneNumber != null){
+		echo '<b>Phone Number: </b></b>';
+		echo Chtml::encode($data->author->phoneNumber);
+		echo '<br>';
+	}
+	?>
 	
-	<b><?php echo 'Email: ' ?></b>
-	<?php echo Chtml::encode($data->author->email); ?>
-	</br>
-	
+	<?php if ($data->author->email != null){
+		echo '<b>Email: </b></b>';
+		echo Chtml::encode($data->author->email);
+		echo '<br>';
+	}
+	?>
 	
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('propertyID')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->propertyID), array('view', 'id'=>$data->propertyID)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('address')); ?>:</b>
-	<?php echo CHtml::encode($data->address); ?>
-	<br />
+	
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('rent')); ?>:</b>
 	<?php echo '$'; ?>
@@ -62,6 +69,7 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('imageID')); ?>:</b>
 	<?php echo CHtml::encode($data->imageID); ?>
 	<br />
+	
 	
 
 	 

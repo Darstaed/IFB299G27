@@ -18,6 +18,9 @@ $this->menu=array(
 
 <h1>View Property listing #<?php echo $model->propertyID; ?></h1>
 
+<?php $model->numViews++; //Update number of page views
+$model->save();
+?>
 
 <?php
 	//echo author infomation
@@ -50,5 +53,7 @@ $this->menu=array(
 			'filter'=>false,
 			),
 		'imageID',
+		'numViews',
 	),
-)); ?>
+));
+?>

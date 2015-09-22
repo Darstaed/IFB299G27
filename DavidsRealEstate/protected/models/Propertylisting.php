@@ -82,12 +82,13 @@ class Propertylisting extends CActiveRecord
 			'rent' => 'Rent',
 			'rentfreq' => 'Rent frequency',
 			'numBathroom' => 'Number of Bathrooms',
-			'numBedroom' => 'Number of Bedroom',
+			'numBedroom' => 'Number of Bedrooms',
 			'numCarPorts' => 'Number of Car Ports',
 			'createTime' => 'Create Time',
 			'updateTime' => 'Update Time',
 			'authorID' => 'Author',
 			'imageID' => 'Image',
+			'numViews' => 'Number of Views'
 		);
 	}
 
@@ -111,11 +112,11 @@ class Propertylisting extends CActiveRecord
 
 		$criteria->compare('propertyID',$this->propertyID);
 		$criteria->compare('address',$this->address,true);
-		$criteria->compare('rent',$this->rent,true);
+		$criteria->compare('rent <',$this->rent,true);
 		$criteria->compare('rentfreq',$this->rentfreq,true);
-		$criteria->compare('numBathroom',$this->numBathroom);
-		$criteria->compare('numBedroom',$this->numBedroom);
-		$criteria->compare('numCarPorts',$this->numCarPorts);
+		$criteria->compare('numBathroom >',$this->numBathroom);
+		$criteria->compare('numBedroom >',$this->numBedroom);
+		$criteria->compare('numCarPorts >',$this->numCarPorts);
 		$criteria->compare('createTime',$this->createTime,true);
 		$criteria->compare('updateTime',$this->updateTime,true);
 		$criteria->compare('authorID',$this->authorID);
