@@ -82,12 +82,13 @@ class Propertylisting extends CActiveRecord
 			'rent' => 'Rent',
 			'rentfreq' => 'Rent frequency',
 			'numBathroom' => 'Number of Bathrooms',
-			'numBedroom' => 'Number of Bedroom',
+			'numBedroom' => 'Number of Bedrooms',
 			'numCarPorts' => 'Number of Car Ports',
 			'createTime' => 'Create Time',
 			'updateTime' => 'Update Time',
 			'authorID' => 'Author',
 			'imageID' => 'Image',
+			'numViews' => 'Number of Views'
 		);
 	}
 
