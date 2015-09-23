@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Create Property listing', 'url'=>array('create')),
+	array('label'=>'Manage Property listing', 'url'=>array('admin')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -44,16 +45,17 @@ $('.search-form form').submit(function(){
 
 
 <?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
+	'dataProvider'=>$model->search(),
 	'itemView'=>'_view',
 	'id'=>'proplistview',       // must have id corresponding to js above
+	'template'=>"{items}\n{pager}",
     'sortableAttributes'=>array(
         'propertyID',
 		'rent',
 		'numBathroom',
 		'numBedroom',
-		'numCarPorts'
+		'numCarPorts',
+		'status',
 		),
-
 )); 
 ?>

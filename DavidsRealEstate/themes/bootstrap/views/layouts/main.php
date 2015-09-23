@@ -20,7 +20,7 @@
 	'type' =>'inverse',// null or inverse
 	//'brand'=>CHtml::image(Yii::app()->getBaseUrl().'/images/titleDavids Real Estate.gif', 'Davids Real Estate', array('height'=>'150', 'width'=>'150')),
 	'brand'=>'Davids Real Estate',
-	'brandUrl'=>'/DavidsRealEstate/index.php',
+	'brandUrl'=>'/DavidsRealEstate',
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',

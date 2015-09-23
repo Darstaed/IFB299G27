@@ -62,7 +62,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'type'=>'datetime',
 			'filter'=>false,
 			),
-		
+		array(
+            'name'=>'status',
+            'value'=>'Lookup::item("PostStatus",$data->status)',
+            'filter'=>Lookup::items('PostStatus'),
+        ),
 		array(
 			'class'=>'CButtonColumn',
 		),

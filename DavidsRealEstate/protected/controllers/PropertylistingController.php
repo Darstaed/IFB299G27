@@ -49,12 +49,12 @@ class PropertylistingController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView()
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$propertylisting=$this->loadModel();
+		$this->render('view',array('model'=>$propertylisting,));
 	}
+ 
 
 	/**
 	 * Creates a new model.
@@ -66,17 +66,19 @@ class PropertylistingController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['Propertylisting']))
 		{
 			$model->attributes=$_POST['Propertylisting'];
 			if($model->save())
+			{	
 				$this->redirect(array('view','id'=>$model->propertyID));
+			}
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		$this->render('create',array('model'=>$model,));
+		
+		
 	}
 
 	/**
@@ -124,15 +126,19 @@ class PropertylistingController extends Controller
 	{
 		$model=new Propertylisting('search');
 		$model->unsetAttributes();  // clear any default values
+		$model->status = 2;
 		if(isset($_GET['Propertylisting']))
 			$model->attributes=$_GET['Propertylisting'];
 	
-		$criteria=new CDbCriteria(array('with'=>'author'));
+		$criteria=new CDbCriteria(array(
+		'condition'=>'status='.Propertylisting::STATUS_PUBLISHED,
+		'with'=>array('author','tenant'),
+		));
 	
 		$dataProvider=new CActiveDataProvider('Propertylisting', array('pagination'=>array('pageSize'=>5,), 'criteria'=>$criteria));
 		
+		
 		$this->render('index',array(
-        'dataProvider'=>$model->search(),
         'model'=>$model)
 		);
 	}
@@ -154,6 +160,7 @@ class PropertylistingController extends Controller
 		));
 	}
 
+	private $_model;
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -161,12 +168,23 @@ class PropertylistingController extends Controller
 	 * @return Propertylisting the loaded model
 	 * @throws CHttpException
 	 */
-	public function loadModel($id)
-	{
-		$model=Propertylisting::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+	public function loadModel()
+{
+    if($this->_model===null)
+    {
+        if(isset($_GET['id']))
+        {
+            if(Yii::app()->user->isGuest)
+                $condition='status='.Propertylisting::STATUS_PUBLISHED
+                    .' OR status='.Propertylisting::STATUS_ARCHIVED;
+            else
+                $condition='';
+            $this->_model=Propertylisting::model()->findByPk($_GET['id'], $condition);
+        }
+        if($this->_model===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+    }
+    return $this->_model;
 	}
 
 	/**
@@ -181,4 +199,27 @@ class PropertylistingController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	// I have a drop down menu populated with all tenants that have been created
+	// these tenants are from a tenant table in my database with propertyID that is not yet set
+	// if a user selects a particular tenant and clicks submit on the property listing I want that tenant
+	// to then be assigned that property id respectivley
+	
+	//protected function afterSave() 
+	//{
+		//parent::afterSave();
+		//Tenant::model()->updateTenantID($this->_oldTags, $this->tags)
+	//}
+	
+	
+	
+	//protected function afterDelete() // I want to make the tentants property ID not set
+	//{
+		//parent::afterDelete();
+		//Tenant::model()->deleteAll('tenantID='.$this->tenantID);
+	
+	//}
+	
+	
+	
 }
