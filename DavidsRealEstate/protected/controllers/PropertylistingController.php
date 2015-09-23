@@ -63,22 +63,40 @@ class PropertylistingController extends Controller
 	public function actionCreate()
 	{
 		$model=new Propertylisting;
-
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		
+
 		if(isset($_POST['Propertylisting']))
 		{
 			$model->attributes=$_POST['Propertylisting'];
-			if($model->save())
-			{	
-				$this->redirect(array('view','id'=>$model->propertyID));
+			$images = CUploadedFile::getInstancesByName('images');
+			if (isset($images) && count($images) >0)
+			{
+				foreach ($images as $image =>$pic)
+				{
+					echo $pic->name.'<br/>';
+					if ($pic->saveAs(Yii::getPathOfAlias('webroot').'/images/'.$pic->name))
+					{
+						$img_add = new Picture();
+						$img_add->filename=$pic->name;
+						$img_add->ImageID = $model->id;
+						$img_add->save();
+					}
+				}
+				if ($model->save())
+				{
+					$this->redirect(array('view','id'=>$model->ImageID));
+				}
 			}
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->propertyID));
+			
 		}
 
-		$this->render('create',array('model'=>$model,));
-		
-		
+		$this->render('create',array(
+			'model'=>$model,
+		));
 	}
 
 	/**

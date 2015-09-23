@@ -59,7 +59,12 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'imageID'); ?>
-		<?php echo $form->textField($model,'imageID',array('size'=>60,'maxlength'=>255)); ?>
+		<?php //echo $form->textField($model,'imageID',array('size'=>60,'maxlength'=>255)); ?>
+		<?php $form->widget('CMultiFileUpload',array(
+		'name'=>'images',
+		'accept'=>'jpeg|jpg|gif|png',
+		'duplicate'=>'Duplicate File!',
+		'denied'=>'Invalid file type',)); ?>
 		<?php echo $form->error($model,'imageID'); ?>
 	</div>
 	
