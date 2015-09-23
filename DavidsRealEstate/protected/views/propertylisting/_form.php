@@ -51,7 +51,7 @@
 		<?php echo $form->error($model,'numBedroom'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row"> 
 		<?php echo $form->labelEx($model,'numCarPorts'); ?>
 		<?php echo $form->textField($model,'numCarPorts'); ?>
 		<?php echo $form->error($model,'numCarPorts'); ?>
@@ -59,9 +59,30 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'imageID'); ?>
-		<?php echo $form->textField($model,'imageID',array('size'=>60,'maxlength'=>255)); ?>
+		<?php //echo $form->textField($model,'imageID',array('size'=>60,'maxlength'=>255)); ?>
+		<?php $form->widget('CMultiFileUpload',array(
+		'name'=>'images',
+		'accept'=>'jpeg|jpg|gif|png',
+		'duplicate'=>'Duplicate File!',
+		'denied'=>'Invalid file type',)); ?>
 		<?php echo $form->error($model,'imageID'); ?>
 	</div>
+	
+	<div class="row">
+	<?php echo $form->labelEx($model,'status'); ?>
+	<?php echo $form->dropDownList($model,'status',Lookup::items('PostStatus')); ?>
+	</div>
+	
+	<div class="row">
+	<?php echo $form->labelEx($model,'tenantID'); ?>
+	<?php 				
+	echo $form->dropDownList($model, 'tenantID', 
+	CHtml::listData(Tenants::model()->findAll(), 'tenantID','firstname'), 
+	array('empty' => '--please select--') ); 
+	?>
+	<?php echo $form->error($model,'tenantID'); ?>
+	</div>
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

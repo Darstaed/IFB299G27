@@ -1,6 +1,6 @@
 <?php
 
-class PropertylistingController extends Controller
+class TenantsController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -29,11 +29,11 @@ class PropertylistingController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'users'=>array('admin'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'users'=>array('admin'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
@@ -49,12 +49,12 @@ class PropertylistingController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView()
+	public function actionView($id)
 	{
-		$propertylisting=$this->loadModel();
-		$this->render('view',array('model'=>$propertylisting,));
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
 	}
- 
 
 	/**
 	 * Creates a new model.
@@ -62,36 +62,16 @@ class PropertylistingController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Propertylisting;
-		
+		$model=new Tenants;
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Propertylisting']))
+		if(isset($_POST['Tenants']))
 		{
-			$model->attributes=$_POST['Propertylisting'];
-			$images = CUploadedFile::getInstancesByName('images');
-			if (isset($images) && count($images) >0)
-			{
-				foreach ($images as $image =>$pic)
-				{
-					echo $pic->name.'<br/>';
-					if ($pic->saveAs(Yii::getPathOfAlias('webroot').'/images/'.$pic->name))
-					{
-						$img_add = new Picture();
-						$img_add->filename=$pic->name;
-						$img_add->ImageID = $model->id;
-						$img_add->save();
-					}
-				}
-				if ($model->save())
-				{
-					$this->redirect(array('view','id'=>$model->ImageID));
-				}
-			}
+			$model->attributes=$_POST['Tenants'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->propertyID));
-			
+				$this->redirect(array('view','id'=>$model->tenantID));
 		}
 
 		$this->render('create',array(
@@ -111,11 +91,11 @@ class PropertylistingController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Propertylisting']))
+		if(isset($_POST['Tenants']))
 		{
-			$model->attributes=$_POST['Propertylisting'];
+			$model->attributes=$_POST['Tenants'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->propertyID));
+				$this->redirect(array('view','id'=>$model->tenantID));
 		}
 
 		$this->render('update',array(
@@ -142,102 +122,55 @@ class PropertylistingController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Propertylisting('search');
-		$model->unsetAttributes();  // clear any default values
-		$model->status = 2;
-		if(isset($_GET['Propertylisting']))
-			$model->attributes=$_GET['Propertylisting'];
-	
 		$criteria=new CDbCriteria(array(
-		'condition'=>'status='.Propertylisting::STATUS_PUBLISHED,
-		'with'=>array('author','tenant'),
+		'with'=>'property',
 		));
-	
-		$dataProvider=new CActiveDataProvider('Propertylisting', array('pagination'=>array('pageSize'=>5,), 'criteria'=>$criteria));
-		
-		
+		$dataProvider=new CActiveDataProvider('Tenants', array('criteria'=>$criteria));
 		$this->render('index',array(
-        'model'=>$model)
-		);
+			'dataProvider'=>$dataProvider,
+		));
 	}
-	
 
 	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
-		$model=new Propertylisting('search');
+		$model=new Tenants('search');
 		$model->unsetAttributes();  // clear any default values
-		
-		if(isset($_GET['Propertylisting']))
-			$model->attributes=$_GET['Propertylisting'];
+		if(isset($_GET['Tenants']))
+			$model->attributes=$_GET['Tenants'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
 
-	private $_model;
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Propertylisting the loaded model
+	 * @return Tenants the loaded model
 	 * @throws CHttpException
 	 */
-	public function loadModel()
-{
-    if($this->_model===null)
-    {
-        if(isset($_GET['id']))
-        {
-            if(Yii::app()->user->isGuest)
-                $condition='status='.Propertylisting::STATUS_PUBLISHED
-                    .' OR status='.Propertylisting::STATUS_ARCHIVED;
-            else
-                $condition='';
-            $this->_model=Propertylisting::model()->findByPk($_GET['id'], $condition);
-        }
-        if($this->_model===null)
-            throw new CHttpException(404,'The requested page does not exist.');
-    }
-    return $this->_model;
+	public function loadModel($id)
+	{
+		$model=Tenants::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
 	}
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Propertylisting $model the model to be validated
+	 * @param Tenants $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='propertylisting-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='tenants-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-	
-	// I have a drop down menu populated with all tenants that have been created
-	// these tenants are from a tenant table in my database with propertyID that is not yet set
-	// if a user selects a particular tenant and clicks submit on the property listing I want that tenant
-	// to then be assigned that property id respectivley
-	
-	//protected function afterSave() 
-	//{
-		//parent::afterSave();
-		//Tenant::model()->updateTenantID($this->_oldTags, $this->tags)
-	//}
-	
-	
-	
-	//protected function afterDelete() // I want to make the tentants property ID not set
-	//{
-		//parent::afterDelete();
-		//Tenant::model()->deleteAll('tenantID='.$this->tenantID);
-	
-	//}
-	
-	
-	
 }

@@ -5,36 +5,20 @@
 
 <div class="view">
 	
-	<h4>
-	<br />
-	<?php echo CHtml::link($data->address, CHtml::encode($data->propertyID)); ?>
-	</h4>
 	
-	<b><?php echo 'Property Manager: ' ?></b>
+	<b><?php echo 'Author: ' ?></b>
 	<?php echo Chtml::encode($data->author->firstname); ?>
 	<?php echo Chtml::encode($data->author->surname); ?>
 	</br>
-	
-	<?php if ($data->author->phoneNumber != null){
-		echo '<b>Phone Number: </b></b>';
-		echo Chtml::encode($data->author->phoneNumber);
-		echo '<br>';
-	}
-	?>
-	
-	<?php if ($data->author->email != null){
-		echo '<b>Email: </b></b>';
-		echo Chtml::encode($data->author->email);
-		echo '<br>';
-	}
-	?>
 	
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('propertyID')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->propertyID), array('view', 'id'=>$data->propertyID)); ?>
 	<br />
 
-	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('address')); ?>:</b>
+	<?php echo CHtml::encode($data->address); ?>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('rent')); ?>:</b>
 	<?php echo '$'; ?>
@@ -70,6 +54,13 @@
 	<?php echo CHtml::encode($data->imageID); ?>
 	<br />
 	
+	
+		<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
+	<?php echo CHtml::encode(Lookup::item("PostStatus",$data->status)); ?>
+	<br />
+	
+	
+	<b><br/>
 	
 
 	 

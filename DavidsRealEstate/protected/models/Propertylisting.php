@@ -13,12 +13,16 @@
  * @property integer $numCarPorts
  * @property string $createTime
  * @property string $updateTime
+ * @property integer $status
  * @property integer $authorID
  * @property string $imageID
+ * @property integer $tenantID
  *
  * The followings are the available model relations:
  * @property User[] $users
  * @property Gallery[] $galleries
+ * @property Tenants[] $tenants
+ * @property Tenants $tenant
  * @property Gallery $image
  * @property User $author
  */
@@ -33,6 +37,10 @@ class Propertylisting extends CActiveRecord
 		return '{{propertylisting}}';
 	}
 	
+    const STATUS_DRAFT=1;
+    const STATUS_PUBLISHED=2;
+    const STATUS_ARCHIVED=3;
+	
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -43,15 +51,16 @@ class Propertylisting extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('address', 'unique'),
-			array('address, rent, rentfreq', 'required'),
-			array('numBathroom, numBedroom, numCarPorts, authorID, rent', 'numerical', 'integerOnly'=>true),
+			array('address, rent, rentfreq, status', 'required'),
+			array('status', 'in', 'range'=>array(1,2,3)),
+			array('numBathroom, numBedroom, numCarPorts, authorID, rent, status, tenantID', 'numerical', 'integerOnly'=>true),
 			array('address, imageID', 'length', 'max'=>255),
 			array('rent', 'length', 'max'=>4),
 			array('rentfreq', 'length', 'max'=>15),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('propertyID, address, rent, rentfreq, numBathroom, numBedroom, numCarPorts, createTime, updateTime, authorID, imageID', 'safe', 'on'=>'search'),
+			array('propertyID, address, rent, rentfreq, numBathroom, numBedroom, numCarPorts, createTime, updateTime, authorID, imageID, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,10 +72,12 @@ class Propertylisting extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'author' => array(self::BELONGS_TO, 'User', 'authorID'),
-			'image' => array(self::BELONGS_TO, 'Gallery', 'imageID'),
 			'users' => array(self::HAS_MANY, 'User', 'propertyOwned'),
 			'galleries' => array(self::HAS_MANY, 'Gallery', 'propertyID'),
+			'tenants' => array(self::HAS_MANY, 'Tenants', 'propertyID'),
+			'tenant' => array(self::BELONGS_TO, 'Tenants', 'tenantID'),
+			'image' => array(self::BELONGS_TO, 'Gallery', 'imageID'),
+			'author' => array(self::BELONGS_TO, 'User', 'authorID'),
 			
 		);
 	}	
@@ -82,13 +93,14 @@ class Propertylisting extends CActiveRecord
 			'rent' => 'Rent',
 			'rentfreq' => 'Rent frequency',
 			'numBathroom' => 'Number of Bathrooms',
-			'numBedroom' => 'Number of Bedrooms',
+			'numBedroom' => 'Number of Bedroom',
 			'numCarPorts' => 'Number of Car Ports',
 			'createTime' => 'Create Time',
 			'updateTime' => 'Update Time',
+			'status' => 'Status',
 			'authorID' => 'Author',
 			'imageID' => 'Image',
-			'numViews' => 'Number of Views'
+			'tenantID' => 'Tenant',
 		);
 	}
 
@@ -119,7 +131,9 @@ class Propertylisting extends CActiveRecord
 		$criteria->compare('numCarPorts >',$this->numCarPorts);
 		$criteria->compare('createTime',$this->createTime,true);
 		$criteria->compare('updateTime',$this->updateTime,true);
+		$criteria->compare('status',$this->status);
 		$criteria->compare('authorID',$this->authorID);
+		$criteria->compare('tenantID',$this->tenantID);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

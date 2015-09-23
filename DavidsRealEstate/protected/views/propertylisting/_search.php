@@ -55,7 +55,11 @@
 		<?php //echo $form->label($model,'updateTime'); ?>
 		<?php //echo $form->textField($model,'updateTime'); ?>
 	</div>
-
+	
+	<div class="row">
+	<?php //echo $form->labelEx($model,'status'); ?>
+	<?php //echo $form->dropDownList($model,'status',Lookup::items('PostStatus')); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

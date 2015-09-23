@@ -18,23 +18,29 @@ $this->menu=array(
 
 <h1>View Property listing #<?php echo $model->propertyID; ?></h1>
 
-<?php $model->numViews++; //Update number of page views
-$model->save();
-?>
 
-<?php
-	//echo author infomation
-	$author=$model->author;
-	echo $author -> firstname;
-	echo ' ';
-	echo $author -> surname;
-	echo ' ';
-	echo $author ->  email;
-?>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+
+<?php 
+if(Yii::app()->user->isGuest) {
+$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
+		array(              
+            'name'=>'Property Manager',
+            'type'=>'raw',
+            'value'=>CHtml::link(CHtml::encode($model->author->firstname. ' ' . $model->author->surname)),
+		),
+		array(              
+            'name'=>'Email',
+            'type'=>'raw',
+            'value'=>CHtml::link(CHtml::encode($model->author->email)),
+		),
+		array(              
+            'name'=>'Phone Number',
+            'type'=>'text',
+            'value'=>CHtml::encode($model->author->phoneNumber),
+		),
 		'propertyID',
 		'address',
 		'rent',
@@ -53,7 +59,65 @@ $model->save();
 			'filter'=>false,
 			),
 		'imageID',
-		'numViews',
+		array(
+			'name'=>'Status',
+			'type'=>'text',
+			'value'=>CHtml::encode(Lookup::item("PostStatus",$model->status)),
+			),
+		
 	),
-));
+)); 
+}else // user is not guest
+{
+$this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		array(              
+            'name'=>'Property Manager',
+            'type'=>'raw',
+            'value'=>CHtml::link(CHtml::encode($model->author->firstname. ' ' . $model->author->surname)),
+		),
+		array(              
+            'name'=>'Email',
+            'type'=>'raw',
+            'value'=>CHtml::link(CHtml::encode($model->author->email)),
+		),
+		array(              
+            'name'=>'Phone Number',
+            'type'=>'text',
+            'value'=>CHtml::encode($model->author->phoneNumber),
+		),
+		'propertyID',
+		'address',
+		'rent',
+		'rentfreq',
+		'numBathroom',
+		'numBedroom',
+		'numCarPorts',
+		array(
+			'name'=>'createTime',
+			'type'=>'datetime',
+			'filter'=>false,
+			),
+		array(
+			'name'=>'updateTime',
+			'type'=>'datetime',
+			'filter'=>false,
+			),
+		'imageID',
+		array(
+			'name'=>'Status',
+			'type'=>'text',
+			'value'=>CHtml::encode(Lookup::item("PostStatus",$model->status)),
+			),
+		array(              
+            'name'=>'TenantID',
+            'type'=>'raw',
+            'value'=>CHtml::link(CHtml::encode($model->tenantID)),
+		),
+		
+	),
+)); 
+
+}
 ?>
