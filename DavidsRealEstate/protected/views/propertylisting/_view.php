@@ -5,6 +5,10 @@
 
 <div class="view">
 	
+	<h4>
+	<br />
+	<?php echo CHtml::link($data->address, CHtml::encode($data->propertyID)); ?>
+	</h4>
 	
 	<b><?php echo 'Author: ' ?></b>
 	<?php echo Chtml::encode($data->author->firstname); ?>
@@ -60,7 +64,7 @@
 	<br />
 	
 	
-	<b><br/>
+	<br/>
 	
 
 	 
