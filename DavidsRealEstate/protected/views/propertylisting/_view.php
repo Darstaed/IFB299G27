@@ -54,6 +54,8 @@
 	<?php echo CHtml::encode($data->imageID); ?>
 	<br />
 	
+
+	
 		<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
 	<?php echo CHtml::encode(Lookup::item("PostStatus",$data->status)); ?>
 	<br />
