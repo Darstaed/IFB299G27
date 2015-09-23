@@ -18,7 +18,9 @@ $this->menu=array(
 
 <h1>View Property listing #<?php echo $model->propertyID; ?></h1>
 
-
+<?php $model->numViews++;
+$model->save();
+?>
 
 
 <?php 
@@ -64,6 +66,7 @@ $this->widget('zii.widgets.CDetailView', array(
 			'type'=>'text',
 			'value'=>CHtml::encode(Lookup::item("PostStatus",$model->status)),
 			),
+		'numViews'
 		
 	),
 )); 
