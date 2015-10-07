@@ -22,6 +22,7 @@ $this->menu=array(
 $model->save();
 ?>
 
+<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/'.$model->imageID,"image",array("width"=>200)); ?>
 
 <?php 
 if(Yii::app()->user->isGuest) {

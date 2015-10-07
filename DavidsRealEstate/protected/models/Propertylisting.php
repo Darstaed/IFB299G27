@@ -58,6 +58,7 @@ class Propertylisting extends CActiveRecord
 			array('rent', 'length', 'max'=>4),
 			array('rentfreq', 'length', 'max'=>15),
 			array('createTime, updateTime', 'safe'),
+			array('imageID', 'file','types'=>'jpg, gif, png', 'allowEmpty'=>true, 'on'=>'update'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('propertyID, address, rent, rentfreq, numBathroom, numBedroom, numCarPorts, createTime, updateTime, authorID, imageID, status', 'safe', 'on'=>'search'),

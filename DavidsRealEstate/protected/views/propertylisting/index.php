@@ -36,6 +36,7 @@ $('.search-form form').submit(function(){
 
 
 
+
 <b><?php echo CHtml::link('Search','#',array('class'=>'search-button')); ?></b>
 <div class="search-form" style="display:none">
 <?php  $this->renderPartial('_search',array(

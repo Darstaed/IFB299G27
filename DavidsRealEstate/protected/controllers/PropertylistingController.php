@@ -64,24 +64,46 @@ class PropertylistingController extends Controller
 	{
 		$model=new Propertylisting;
 		
+		if(isset($_POST['Propertylisting']))
+        {
+            $rnd = rand(0,9999);  // generate random number between 0-9999
+            $model->attributes=$_POST['Propertylisting'];
+ 
+            $uploadedFile=CUploadedFile::getInstance($model, 'imageID');
+            $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+            $model->imageID = $fileName;
+            if($model->save())
+            {
+                $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
+                $this->redirect(array('admin'));
+            }
+        }
+        $this->render('create',array(
+            'model'=>$model,
+        ));
+		
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Propertylisting']))
+		/**if(isset($_POST['Propertylisting']))
 		{
 			$model->attributes=$_POST['Propertylisting'];
-			$images = CUploadedFile::getInstancesByName('images');
+			$images = CUploadedFile::getInstancesByName('imageID');
+			$images->saveAs(YYii::app()->basePath.'/images/'.$pic->name);
 			if (isset($images) && count($images) >0)
 			{
 				foreach ($images as $image =>$pic)
 				{
 					echo $pic->name.'<br/>';
-					if ($pic->saveAs(Yii::getPathOfAlias('webroot').'/images/'.$pic->name))
+					$model->ImageID = $pic->name;
+					if ($pic->saveAs(YYii::app()->basePath.'/images/'.$pic->name))
 					{
 						$img_add = new Picture();
 						$img_add->filename=$pic->name;
 						$img_add->ImageID = $model->id;
 						$img_add->save();
+						
 					}
 				}
 				if ($model->save())
@@ -96,7 +118,7 @@ class PropertylistingController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
-		));
+		));**/
 	}
 
 	/**
