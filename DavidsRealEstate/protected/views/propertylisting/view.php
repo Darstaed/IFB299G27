@@ -119,6 +119,7 @@ $this->widget('zii.widgets.CDetailView', array(
             'type'=>'raw',
             'value'=>CHtml::link(CHtml::encode($model->tenantID)),
 		),
+		'numViews'
 		
 	),
 )); 

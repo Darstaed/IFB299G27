@@ -10,6 +10,9 @@
 	<?php echo CHtml::link($data->address, CHtml::encode($data->propertyID)); ?>
 	</h4>
 	
+	<?php echo CHtml::link(CHtml::image(Yii::app()->request->baseUrl.'/images/'.$data->imageID,"image",array("width"=>200)), CHtml::encode($data->propertyID)); ?>
+	<br/>
+	
 	<b><?php echo 'Author: ' ?></b>
 	<?php echo Chtml::encode($data->author->firstname); ?>
 	<?php echo Chtml::encode($data->author->surname); ?>
