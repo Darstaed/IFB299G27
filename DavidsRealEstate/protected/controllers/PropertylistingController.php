@@ -72,53 +72,15 @@ class PropertylistingController extends Controller
             $uploadedFile=CUploadedFile::getInstance($model, 'imageID');
             $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
             $model->imageID = $fileName;
-            if($model->save())
+            if($model->save())// we need to check if image was uploaded
             {
                 $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
-                
+                $this->redirect('admin',array('model'=>$model));
             }
         }
         $this->render('create',array(
             'model'=>$model,
         ));
-		
-		
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		/**if(isset($_POST['Propertylisting']))
-		{
-			$model->attributes=$_POST['Propertylisting'];
-			$images = CUploadedFile::getInstancesByName('imageID');
-			$images->saveAs(YYii::app()->basePath.'/images/'.$pic->name);
-			if (isset($images) && count($images) >0)
-			{
-				foreach ($images as $image =>$pic)
-				{
-					echo $pic->name.'<br/>';
-					$model->ImageID = $pic->name;
-					if ($pic->saveAs(YYii::app()->basePath.'/images/'.$pic->name))
-					{
-						$img_add = new Picture();
-						$img_add->filename=$pic->name;
-						$img_add->ImageID = $model->id;
-						$img_add->save();
-						
-					}
-				}
-				if ($model->save())
-				{
-					$this->redirect(array('view','id'=>$model->ImageID));
-				}
-			}
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->propertyID));
-			
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));**/
 	}
 
 	/**
@@ -172,7 +134,7 @@ class PropertylistingController extends Controller
 	
 		$criteria=new CDbCriteria(array(
 		'condition'=>'status='.Propertylisting::STATUS_PUBLISHED,
-		'with'=>array('author','tenant'),
+		'with'=>array('author'),
 		));
 	
 		$dataProvider=new CActiveDataProvider('Propertylisting', array('pagination'=>array('pageSize'=>5,), 'criteria'=>$criteria));

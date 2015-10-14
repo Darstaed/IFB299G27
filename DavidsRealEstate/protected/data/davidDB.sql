@@ -52,6 +52,7 @@ CREATE TABLE tbl_propertylisting
     authorID INTEGER NOT NULL,
     imageID VARCHAR(255) NULL,
 	tenantID INTEGER NULL,
+	numViews INTEGER NULL,
 	FOREIGN KEY(authorID) REFERENCES tbl_user(id),
 	FOREIGN KEY(imageID) REFERENCES tbl_gallery(imageID),
 	FOREIGN KEY(tenantID) REFERENCES tbl_tenants(tenantID)

@@ -56,11 +56,16 @@
 	</div>
 
 
-
 	<div class="row">
-		<?php echo $form->labelEx($model,'roles'); ?>
-		<?php echo $form->textField($model,'roles'); ?>
-		<?php echo $form->error($model,'roles'); ?>
+	<?php
+		if(Yii::app()->user->getName()=='admin')// user is an admin
+		{
+			echo $form->labelEx($model,'roles'); 
+			echo $form->dropDownList($model,'roles', array('admin'=>'admin', 'property manager'=>'property manager', 'owner'=>'owner', 'tenant'=>'tenant')); 
+			echo $form->error($model,'roles'); 
+			
+		}
+	?>
 	</div>
 	
 	

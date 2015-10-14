@@ -17,11 +17,10 @@
  * @property integer $authorID
  * @property string $imageID
  * @property integer $tenantID
+ * @property integer $numViews
  *
  * The followings are the available model relations:
  * @property User[] $users
- * @property Gallery[] $galleries
- * @property Tenants[] $tenants
  * @property Tenants $tenant
  * @property Gallery $image
  * @property User $author
@@ -54,7 +53,7 @@ class Propertylisting extends CActiveRecord
 			array('address', 'unique'),
 			array('address, rent, rentfreq, status', 'required'),
 			array('status', 'in', 'range'=>array(1,2,3)),
-			array('numBathroom, numBedroom, numCarPorts, authorID, rent, status, tenantID', 'numerical', 'integerOnly'=>true),
+			array('numBathroom, numBedroom, numCarPorts, authorID, rent, status, tenantID, numViews', 'numerical', 'integerOnly'=>true),
 			array('address, imageID', 'length', 'max'=>255),
 			array('rent', 'length', 'max'=>4),
 			array('rentfreq', 'length', 'max'=>15),
@@ -62,7 +61,7 @@ class Propertylisting extends CActiveRecord
 			array('imageID', 'file','types'=>'jpg, gif, png', 'allowEmpty'=>true, 'on'=>'update'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('propertyID, address, rent, rentfreq, numBathroom, numBedroom, numCarPorts, createTime, updateTime, authorID, imageID, status', 'safe', 'on'=>'search'),
+			array('propertyID, address, rent, rentfreq, numBathroom, numBedroom, numCarPorts, createTime, updateTime, authorID, imageID, status, numViews', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -100,6 +99,7 @@ class Propertylisting extends CActiveRecord
 			'authorID' => 'Author',
 			'imageID' => 'Image',
 			'tenantID' => 'Tenant',
+			'numViews' => 'Num Views',
 		);
 	}
 
@@ -133,6 +133,7 @@ class Propertylisting extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('authorID',$this->authorID);
 		$criteria->compare('tenantID',$this->tenantID);
+		$criteria->compare('numViews',$this->numViews);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

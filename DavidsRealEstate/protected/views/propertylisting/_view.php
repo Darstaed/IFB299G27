@@ -13,12 +13,6 @@
 	<?php echo CHtml::link(CHtml::image(Yii::app()->request->baseUrl.'/images/'.$data->imageID,"image",array("width"=>200)), CHtml::encode($data->propertyID)); ?>
 	<br/>
 	
-	<b><?php echo 'Author: ' ?></b>
-	<?php echo Chtml::encode($data->author->firstname); ?>
-	<?php echo Chtml::encode($data->author->surname); ?>
-	</br>
-	
-	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('propertyID')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->propertyID), array('view', 'id'=>$data->propertyID)); ?>
 	<br />
@@ -54,11 +48,6 @@
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updateTime')); ?>:</b>
 	<?php echo  strftime("%d-%m-%Y, %H:%M:%S", CHtml::encode($data->updateTime)); ?>
-	<br />
-
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('imageID')); ?>:</b>
-	<?php echo CHtml::encode($data->imageID); ?>
 	<br />
 	
 	

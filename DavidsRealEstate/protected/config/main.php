@@ -40,9 +40,6 @@
 			'user' => array(
 			'class' => 'WebUser',
 			),
-			'session' => array(
-			'timeout' => 5,
-   ),
     'bootstrap'=>array(
                 'class'=>'bootstrap.components.Bootstrap',
             ),

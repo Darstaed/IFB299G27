@@ -14,7 +14,7 @@ class UserIdentity extends CUserIdentity
         else
         {
             $this->_id=$user->id;
-			//$this->setState('roles', $user->roles); 
+			$this->setState('roles', $user->roles); 
             $this->username=$user->username;
 			
 			
