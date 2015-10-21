@@ -18,20 +18,37 @@
 
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
 	'type' =>'inverse',// null or inverse
-	//'brand'=>CHtml::image(Yii::app()->getBaseUrl().'/images/titleDavids Real Estate.gif', 'Davids Real Estate', array('height'=>'150', 'width'=>'150')),
+	//'brand'=>CHtml::image(Yii::app()->getBaseUrl().'/images/davidRealestateLogo.jpg', 'Davids Real Estate', array('height'=>'150', 'width'=>'150')),
 	'brand'=>'Davids Real Estate',
+	'collapse' => true,
 	'brandUrl'=>Yii::app()->request->baseUrl,
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
+            'htmlOptions'=>array('class'=>'pull-left'),
+            'items'=>array(
+				array('label'=>'About', 'url'=>array('/site/page', 'visible'=>Yii::app()->user->isGuest, 'view'=>'about')),
+				array('label'=>'Community Guidelines', 'url'=>array('/site/page', 'visible'=>Yii::app()->user->isGuest, 'view'=>'communityGuidelines')),
+				array('label'=>'Contact Us', 'url'=>array('/site/contact','visible'=>Yii::app()->user->isGuest)),
+				array('label'=>'Privacy', 'url'=>array('/site/page','visible'=>Yii::app()->user->isGuest, 'view'=>'privacy')),
+				
+				
+            ),
+        ),
+        array(
+            'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array(
+				'htmlOptions'=>array('class'=>'pull-right'),
 				array('label'=>'Register Account', 'url'=>array('user/create'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-            ),
+	
+	            ),
         ),
     ),
+	
+	
 )); ?>
 
 
@@ -50,16 +67,6 @@
 	<div class="clear"></div>
 	
 	<div id="footer">
-	
-<?php $this->widget('zii.widgets.CMenu',array(
-		'items'=>array(
-				array('label'=>'About', 'url'=>array('/site/page', 'visible'=>Yii::app()->user->isGuest, 'view'=>'about')),
-				array('label'=>'Community Guidelines', 'url'=>array('/site/page', 'visible'=>Yii::app()->user->isGuest, 'view'=>'communityGuidelines')),
-				array('label'=>'Contact Us', 'url'=>array('/site/contact','visible'=>Yii::app()->user->isGuest)),
-				array('label'=>'Privacy', 'url'=>array('/site/page','visible'=>Yii::app()->user->isGuest, 'view'=>'privacy')),
-			),
-			'htmlOptions' => array('class'=>'footermenu')
-		)); ?>
 	
 	<p></p>
 	
