@@ -7,10 +7,6 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Property listing', 'url'=>array('index')),
-	array('label'=>'Create Property listing', 'url'=>array('create')),
-);
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){

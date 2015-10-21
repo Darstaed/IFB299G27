@@ -120,6 +120,6 @@
 
     // Define a path alias for the Bootstrap extension as it's used internally.
     // In this example we assume that you unzipped the extension under protected/extensions.
-    return array('components'=>array(  'themeManager' => array('basePath' => 'E:\Web Development\wamp\www\Davids Real Estate\protected\extensions\bootstrap\theme')  ));
+    return array('components'=>array(  'themeManager' => array('basePath' => __DIR__ . '/../extensions/bootstrap')  ));
     ?>
 
