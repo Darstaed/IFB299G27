@@ -7,10 +7,13 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
+
 $this->menu=array(
-	array('label'=>'List Property listing', 'url'=>array('index')),
-	array('label'=>'Manage Property listing', 'url'=>array('admin')),
+	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
+	array('label'=>'Property Listing Management'),
+	array('label'=>'Manage Property Listings', 'icon'=>'book', 'url'=>array('admin')),
 );
+
 ?>
 
 <h1>Create Property listing</h1>

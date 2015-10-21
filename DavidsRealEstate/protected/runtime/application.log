@@ -14438,3 +14438,290 @@ Stack trace:
 REQUEST_URI=/davidsrealestate/
 HTTP_REFERER=http://localhost/davidsrealestate/
 ---
+2015/10/21 12:08:30 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbNav" is invalid. Make sure it points to an existing PHP file and the file is readable.' in E:\Web Development\wamp\www\DavidsRealEstate\framework\YiiBase.php:322
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(UserMenu), 'bootstrap.widge...', Array)
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 E:\Web Development\wamp\www\DavidsRealEstate\protected\components\views\userMenu.php(15): CBaseController->widget('bootstrap.widge...', Array)
+#4 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(130): require('E:\\Web Developm...')
+#5 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', NULL, false)
+#6 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\widgets\CWidget.php(244): CBaseController->renderFile('E:\\Web Developm...', NULL, false)
+#7 E:\Web Development\wamp\www\DavidsRealEstate\protected\components\UserMenu.php(15): CWidget->render('userMenu')
+#8 E:\Web Development\wamp\www\DavidsRealEstate\framework\zii\widgets\CPortlet.php(97): UserMenu->renderContent()
+#9 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(173): CPortlet->run()
+#10 E:\Web Development\wamp\www\DavidsRealEstate\themes\bootstrap\views\layouts\column1.php(11): CBaseController->widget('UserMenu')
+#11 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(126): require('E:\\Web Developm...')
+#12 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', Array, true)
+#13 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(784): CBaseController->renderFile('E:\\Web Developm...', Array, true)
+#14 E:\Web Development\wamp\www\DavidsRealEstate\protected\controllers\SiteController.php(32): CController->render('index')
+#15 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#16 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#17 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#18 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('')
+#20 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#21 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/davidsrealestate/
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/1
+---
+2015/10/21 12:11:05 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbNav" is invalid. Make sure it points to an existing PHP file and the file is readable.' in E:\Web Development\wamp\www\DavidsRealEstate\framework\YiiBase.php:322
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(UserMenu), 'bootstrap.widge...', Array)
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 E:\Web Development\wamp\www\DavidsRealEstate\protected\components\views\userMenu.php(15): CBaseController->widget('bootstrap.widge...', Array)
+#4 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(130): require('E:\\Web Developm...')
+#5 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', NULL, false)
+#6 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\widgets\CWidget.php(244): CBaseController->renderFile('E:\\Web Developm...', NULL, false)
+#7 E:\Web Development\wamp\www\DavidsRealEstate\protected\components\UserMenu.php(15): CWidget->render('userMenu')
+#8 E:\Web Development\wamp\www\DavidsRealEstate\framework\zii\widgets\CPortlet.php(97): UserMenu->renderContent()
+#9 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(173): CPortlet->run()
+#10 E:\Web Development\wamp\www\DavidsRealEstate\themes\bootstrap\views\layouts\column1.php(11): CBaseController->widget('UserMenu')
+#11 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(126): require('E:\\Web Developm...')
+#12 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', Array, true)
+#13 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(784): CBaseController->renderFile('E:\\Web Developm...', Array, true)
+#14 E:\Web Development\wamp\www\DavidsRealEstate\protected\controllers\SiteController.php(32): CController->render('index')
+#15 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#16 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#17 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#18 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('')
+#20 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#21 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/davidsrealestate/
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/1
+---
+2015/10/21 12:11:44 [error] [exception.CException] exception 'CException' with message 'Property "TbListView.items" is not defined.' in E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CComponent.php:173
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWidgetFactory.php(161): CComponent->__set('items', Array)
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(UserMenu), 'bootstrap.widge...', Array)
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 E:\Web Development\wamp\www\DavidsRealEstate\protected\components\views\userMenu.php(15): CBaseController->widget('bootstrap.widge...', Array)
+#4 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(130): require('E:\\Web Developm...')
+#5 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', NULL, false)
+#6 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\widgets\CWidget.php(244): CBaseController->renderFile('E:\\Web Developm...', NULL, false)
+#7 E:\Web Development\wamp\www\DavidsRealEstate\protected\components\UserMenu.php(15): CWidget->render('userMenu')
+#8 E:\Web Development\wamp\www\DavidsRealEstate\framework\zii\widgets\CPortlet.php(97): UserMenu->renderContent()
+#9 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(173): CPortlet->run()
+#10 E:\Web Development\wamp\www\DavidsRealEstate\themes\bootstrap\views\layouts\column1.php(11): CBaseController->widget('UserMenu')
+#11 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(126): require('E:\\Web Developm...')
+#12 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', Array, true)
+#13 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(784): CBaseController->renderFile('E:\\Web Developm...', Array, true)
+#14 E:\Web Development\wamp\www\DavidsRealEstate\protected\controllers\SiteController.php(32): CController->render('index')
+#15 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#16 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#17 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#18 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('')
+#20 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#21 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/davidsrealestate/
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/1
+---
+2015/10/21 12:20:39 [error] [exception.CException] exception 'CException' with message 'Alias "booster.widgets.TbMenu" is invalid. Make sure it points to an existing directory or file.' in E:\Web Development\wamp\www\DavidsRealEstate\framework\YiiBase.php:347
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWidgetFactory.php(146): YiiBase::import('booster.widgets...', true)
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(UserMenu), 'booster.widgets...', Array)
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(172): CBaseController->createWidget('booster.widgets...', Array)
+#3 E:\Web Development\wamp\www\DavidsRealEstate\protected\components\views\userMenu.php(21): CBaseController->widget('booster.widgets...', Array)
+#4 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(130): require('E:\\Web Developm...')
+#5 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', NULL, false)
+#6 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\widgets\CWidget.php(244): CBaseController->renderFile('E:\\Web Developm...', NULL, false)
+#7 E:\Web Development\wamp\www\DavidsRealEstate\protected\components\UserMenu.php(15): CWidget->render('userMenu')
+#8 E:\Web Development\wamp\www\DavidsRealEstate\framework\zii\widgets\CPortlet.php(97): UserMenu->renderContent()
+#9 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(173): CPortlet->run()
+#10 E:\Web Development\wamp\www\DavidsRealEstate\themes\bootstrap\views\layouts\column1.php(11): CBaseController->widget('UserMenu')
+#11 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(126): require('E:\\Web Developm...')
+#12 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', Array, true)
+#13 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(784): CBaseController->renderFile('E:\\Web Developm...', Array, true)
+#14 E:\Web Development\wamp\www\DavidsRealEstate\protected\controllers\SiteController.php(32): CController->render('index')
+#15 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#16 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#17 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#18 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('')
+#20 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#21 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/davidsrealestate/
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/1
+---
+2015/10/21 12:38:08 [error] [php] Illegal string offset 'label' (E:\Web Development\wamp\www\DavidsRealEstate\framework\zii\widgets\CMenu.php:271)
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(172): PropertylistingController->createWidget()
+#1 E:\Web Development\wamp\www\DavidsRealEstate\themes\bootstrap\views\layouts\column2.php(17): PropertylistingController->widget()
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(126): require()
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): PropertylistingController->renderInternal()
+#4 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(784): PropertylistingController->renderFile()
+#5 E:\Web Development\wamp\www\DavidsRealEstate\protected\controllers\PropertylistingController.php(83): PropertylistingController->render()
+#6 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\actions\CInlineAction.php(49): PropertylistingController->actionCreate()
+#7 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilterChain.php(133): PropertylistingController->runAction()
+#9 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CInlineFilter.php(58): PropertylistingController->filterAccessControl()
+#12 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(291): CFilterChain->run()
+#14 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(265): PropertylistingController->runActionWithFilters()
+#15 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): PropertylistingController->run()
+#16 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#18 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CWebApplication->run()
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/create
+in E:\Web Development\wamp\www\DavidsRealEstate\themes\bootstrap\views\layouts\column2.php (17)
+in E:\Web Development\wamp\www\DavidsRealEstate\protected\controllers\PropertylistingController.php (83)
+in E:\Web Development\wamp\www\DavidsRealEstate\index.php (13)
+2015/10/21 12:50:09 [error] [exception.CException] exception 'CException' with message 'PropertylistingController cannot find the requested view "userMenu".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:878
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(782): CController->renderPartial('userMenu', NULL, true)
+#1 E:\Web Development\wamp\www\DavidsRealEstate\protected\views\propertylisting\create.php(12): CController->render('userMenu')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(126): require('E:\\Web Developm...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', Array, true)
+#4 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(869): CBaseController->renderFile('E:\\Web Developm...', Array, true)
+#5 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#6 E:\Web Development\wamp\www\DavidsRealEstate\protected\controllers\PropertylistingController.php(83): CController->render('create', Array)
+#7 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\actions\CInlineAction.php(49): PropertylistingController->actionCreate()
+#8 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(291): CFilterChain->run()
+#15 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('create')
+#17 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#18 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/create
+HTTP_REFERER=http://localhost/davidsrealestate/
+---
+2015/10/21 12:50:58 [error] [exception.CException] exception 'CException' with message 'PropertylistingController cannot find the requested view "userMenu".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:878
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(782): CController->renderPartial('userMenu', NULL, true)
+#1 E:\Web Development\wamp\www\DavidsRealEstate\protected\views\propertylisting\create.php(12): CController->render('userMenu')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(126): require('E:\\Web Developm...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Web Developm...', Array, true)
+#4 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(869): CBaseController->renderFile('E:\\Web Developm...', Array, true)
+#5 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#6 E:\Web Development\wamp\www\DavidsRealEstate\protected\controllers\PropertylistingController.php(83): CController->render('create', Array)
+#7 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\actions\CInlineAction.php(49): PropertylistingController->actionCreate()
+#8 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(291): CFilterChain->run()
+#15 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('create')
+#17 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#18 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/create
+HTTP_REFERER=http://localhost/davidsrealestate/
+---
+2015/10/21 12:53:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:483
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/index.php/propertylisting/create
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/create
+---
+2015/10/21 12:55:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:336
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(291): CFilterChain->run()
+#7 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('update')
+#9 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#10 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/update
+---
+2015/10/21 12:55:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:483
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/index.php/propertylisting/admin
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/update
+---
+2015/10/21 12:55:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:483
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/index.php/propertylisting/admin
+---
+2015/10/21 12:55:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:483
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+---
+2015/10/21 12:55:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:483
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+---
+2015/10/21 12:55:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:483
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+---
+2015/10/21 12:56:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php:483
+Stack trace:
+#0 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 E:\Web Development\wamp\www\DavidsRealEstate\framework\web\CWebApplication.php(141): CWebApplication->runController('propertylisting...')
+#3 E:\Web Development\wamp\www\DavidsRealEstate\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\Web Development\wamp\www\DavidsRealEstate\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+HTTP_REFERER=http://localhost/davidsrealestate/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/index.php/propertylisting/admin
+---
