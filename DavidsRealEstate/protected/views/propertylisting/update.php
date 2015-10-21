@@ -9,10 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
+	array('label'=>'Property Listing Management'),
 	array('label'=>'List Property listing', 'url'=>array('index')),
-	array('label'=>'Create Property listing', 'url'=>array('create')),
+	array('label'=>'Create Property Listing', 'icon'=>'pencil', 'url'=>array('create')),
 	array('label'=>'View Property listing', 'url'=>array('view', 'id'=>$model->propertyID)),
-	array('label'=>'Manage Property listing', 'url'=>array('admin')),
+	array('label'=>'Manage Property Listings', 'icon'=>'book', 'url'=>array('admin')),
 );
 ?>
 

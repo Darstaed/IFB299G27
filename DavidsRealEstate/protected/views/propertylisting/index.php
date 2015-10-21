@@ -7,8 +7,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Property listing', 'url'=>array('create')),
-	array('label'=>'Manage Property listing', 'url'=>array('admin')),
+	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
+	array('label'=>'Property Listing Management'),
+	array('label'=>'Create Property Listing', 'icon'=>'pencil', 'url'=>array('create')),
+	array('label'=>'Manage Property Listings', 'icon'=>'book', 'url'=>array('admin')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

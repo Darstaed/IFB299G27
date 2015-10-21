@@ -8,13 +8,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
+	array('label'=>'Property Listing Management'),
 	array('label'=>'List Property listing', 'url'=>array('index')),
-	array('label'=>'Create Property listing', 'url'=>array('create')),
-	array('label'=>'Update Property listing', 'url'=>array('update', 'id'=>$model->propertyID)),
+	array('label'=>'Create Property Listing', 'icon'=>'pencil', 'url'=>array('create')),
 	array('label'=>'Delete Property listing', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->propertyID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Property listing', 'url'=>array('admin')),
+	array('label'=>'Manage Property Listings', 'icon'=>'book', 'url'=>array('admin')),
 );
 ?>
+
 
 <h1>View Property listing #<?php echo $model->propertyID; ?></h1>
 
