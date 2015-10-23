@@ -18,23 +18,23 @@
 
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
 	'type' =>'inverse',// null or inverse
-	//'brand'=>CHtml::image(Yii::app()->getBaseUrl().'/images/davidRealestateLogo.jpg', 'Davids Real Estate', array('height'=>'150', 'width'=>'150')),
-	'brand'=>'Davids Real Estate',
+	//'brand'=>CHtml::image(Yii::app()->getBaseUrl().'/images/davidRealestateLogo.jpg', 'Davids Real Estate', array('height'=>'75', 'width'=>'75')),
+	'brand' => 'Davids Realestate',
 	'collapse' => true,
 	'brandUrl'=>Yii::app()->request->baseUrl,
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
-            'htmlOptions'=>array('class'=>'pull-left'),
+            'htmlOptions'=>array('font size'=>'6', 'class'=>'pull-left'),
             'items'=>array(
 				array('label'=>'About', 'url'=>array('/site/page', 'visible'=>Yii::app()->user->isGuest, 'view'=>'about')),
 				array('label'=>'Community Guidelines', 'url'=>array('/site/page', 'visible'=>Yii::app()->user->isGuest, 'view'=>'communityGuidelines')),
 				array('label'=>'Contact Us', 'url'=>array('/site/contact','visible'=>Yii::app()->user->isGuest)),
-				array('label'=>'Privacy', 'url'=>array('/site/page','visible'=>Yii::app()->user->isGuest, 'view'=>'privacy')),
 				
 				
             ),
         ),
+		
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
@@ -46,6 +46,8 @@
 	
 	            ),
         ),
+		// this is where it would go
+		
     ),
 	
 	
