@@ -36,12 +36,14 @@
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('propertyOwned')); ?>:</b>
 	<?php echo CHtml::encode($data->propertyOwned); ?>
-	<br />
+	<br />*/ ?>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('roles')); ?>:</b>
 	<?php echo CHtml::encode($data->roles); ?>
 	<br />
+	
 
-	*/ ?>
+
+	
 
 </div>

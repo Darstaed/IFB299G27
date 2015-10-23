@@ -37,16 +37,14 @@
 
             // application components
             'components'=>array(
-			'user' => array(
-			'class' => 'WebUser',
-			),
+		'user'=>array(
+                            // enable cookie-based authentication
+                            'allowAutoLogin'=>true,
+			    'class' => 'WebUser'
+                    ),
     'bootstrap'=>array(
                 'class'=>'bootstrap.components.Bootstrap',
             ),
-                    'user'=>array(
-                            // enable cookie-based authentication
-                            'allowAutoLogin'=>true,
-                    ),
                     // uncomment the following to enable URLs in path-format
 
                     'urlManager'=>array(

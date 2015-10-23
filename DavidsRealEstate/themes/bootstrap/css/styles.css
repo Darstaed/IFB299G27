@@ -1,5 +1,6 @@
 #page {
     padding: 60px;
+	background-color: none;
 }
 
 
@@ -35,4 +36,8 @@
 
 .footermenu li {
     display: inline;
+}
+
+.myMenuText {
+	font-size: 125%;
 }

@@ -10,7 +10,7 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
 	<?php Yii::app()->bootstrap->register(); ?>
-	<?php $image = CHtml::image(Yii::app()->request->baseUrl.'/images/titleDavids Real Estate.gif', 'Davids Real Estate', array('height'=>'135', 'width'=>'260'));?>
+	<?php $image = CHtml::image(Yii::app()->request->baseUrl.'/images/titleDavids Real Estate.gif', 'Davids Real Estate');?>
 	
 </head>
 
@@ -18,26 +18,28 @@
 
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
 	'type' =>'inverse',// null or inverse
-	//'brand'=>CHtml::image(Yii::app()->getBaseUrl().'/images/davidRealestateLogo.jpg', 'Davids Real Estate', array('height'=>'150', 'width'=>'150')),
-	'brand'=>'Davids Real Estate',
-	'collapse' => true,
+	'brand' => 'Davids Realestate',
+	'brandOptions' => array('style' => 'font-size: 200%;'),
 	'brandUrl'=>Yii::app()->request->baseUrl,
+	'collapse' => true,
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-left'),
+			'itemCssClass' => 'myMenuText', 
             'items'=>array(
 				array('label'=>'About', 'url'=>array('/site/page', 'visible'=>Yii::app()->user->isGuest, 'view'=>'about')),
 				array('label'=>'Community Guidelines', 'url'=>array('/site/page', 'visible'=>Yii::app()->user->isGuest, 'view'=>'communityGuidelines')),
 				array('label'=>'Contact Us', 'url'=>array('/site/contact','visible'=>Yii::app()->user->isGuest)),
-				array('label'=>'Privacy', 'url'=>array('/site/page','visible'=>Yii::app()->user->isGuest, 'view'=>'privacy')),
 				
 				
             ),
         ),
+		
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
+			'itemCssClass' => 'myMenuText', 
             'items'=>array(
 				'htmlOptions'=>array('class'=>'pull-right'),
 				array('label'=>'Register Account', 'url'=>array('user/create'), 'visible'=>Yii::app()->user->isGuest),
@@ -46,6 +48,7 @@
 	
 	            ),
         ),
+		
     ),
 	
 	
