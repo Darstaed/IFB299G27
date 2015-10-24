@@ -5,24 +5,6 @@ $this->pageTitle=Yii::app()->name;
 
 ?>
 
-<?php
-
-	echo  Yii::app()->user->getState('roles');
-	
-	echo  Yii::app()->user->id;
-	
-	
-
-	if(Yii::app()->user->checkAccess('admin'))
-	{
-		echo "You are an admin";
-	} else
-	{
-		echo "This is not working";
-	}
-
-?>
-
 <div id="leftcontainer">
 
 <?php $this->beginWidget('bootstrap.widgets.TbHeroUnit', array(
