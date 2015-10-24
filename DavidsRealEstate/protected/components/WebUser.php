@@ -11,10 +11,12 @@ class WebUser extends CWebUser
     public function checkAccess($operation, $params=array())
     {
         if (empty($this->id)) {
-            // Not identified => no rights
+            // Not identified => no rights // user is guest
             return false;
         }
+	
         $role = $this->getState("roles");
+	
         if ($role === 'admin') {
             return true; // admin role has access to everything
         }

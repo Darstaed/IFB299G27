@@ -12,7 +12,11 @@ $this->menu=array(
 );
 ?>
 
+
 <h1>Users</h1>
+<?php echo "The current role stored for the user is: " . Yii::app()->user->getState('roles'); ?>
+
+
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

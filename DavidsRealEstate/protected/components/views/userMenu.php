@@ -7,7 +7,7 @@
 		array('label'=>'Manage Property Listings', 'icon'=>'book', 'url'=>'index.php/propertylisting/admin'),
 		array('label'=>'Account Control'),
 		array('label'=>'Account Settings', 'icon'=>'cog', 'url'=>''),
-		array('label'=>'Logout', 'icon'=>'logout', 'url'=>'site/logout'),
+		array('label'=>'Logout', 'icon'=>'logout', 'icon'=>'icon-off', 'url'=>'site/logout'),
 		
     ),
 )); ?>
