@@ -8,8 +8,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Create User', 'url'=>array('create')),
+	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
+	array('label'=>'User Accounts', 'icon' => 'icon-list', 'url'=>array('index')),
+	array('label'=>'Create User Accounts', 'icon'=>'pencil', 'url'=>array('site/register')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -47,15 +48,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'username',
-		'password',
 		'email',
 		'firstname',
 		'surname',
-		/*
 		'phoneNumber',
 		'propertyOwned',
 		'roles',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

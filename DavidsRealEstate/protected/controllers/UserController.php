@@ -2,8 +2,6 @@
 
 class UserController extends Controller
 {
-	private $_identity;
-	
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -20,7 +18,16 @@ class UserController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-	
+	public function actions()
+{
+    return array(
+        // captcha action renders the CAPTCHA image displayed on the contact page
+        'captcha'=>array(
+            'class'=>'CCaptchaAction',
+            'backColor'=>0xFFFFFF,
+        ),
+    );
+}
 
 	/**
 	 * Specifies the access control rules.
@@ -31,8 +38,12 @@ public function accessRules()
 {   
     return array(
         array('allow',
-            'actions'=>array('admin'),
+            'actions'=>array('admin','index','view','create','update','delete','captcha'),
             'roles'=>array('admin'),
+        ),
+		array('allow',
+            'actions'=>array('update','captcha'),
+            'users'=>array('*'),
         ),
         array('deny',  // deny all users
             'users'=>array('*'),
@@ -52,38 +63,6 @@ public function accessRules()
 	}
 
 	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-public function actionCreate()
-{
-    $model=new User;
-    $duration=0; // will log out if user closed browser
- 
-    // Uncomment the following line if AJAX validation is needed
-    //$this->performAjaxValidation($model);
- 
-    if(isset($_POST['User']))
-    {
-        $model->attributes=$_POST['User'];
-        if($model->save())
-        {
-            $this->_identity=new UserIdentity($model->username, $model->plain_password); // $model->plain_password is the plain text password, $model->password is the hash
-            $this->_identity->authenticate();
-            if($this->_identity->errorCode==UserIdentity::ERROR_NONE) {
-                Yii::app()->user->login($this->_identity,$duration); //login user
-                $this->redirect(Yii::app()->user->returnUrl); //redirect to previous url
-                } else {
-                    die('aint working - make sure the password is plain text');
-                }              
-        }
-    }
-    $this->render('create',array(
-            'model'=>$model,
-        ));
-}
-
-	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
@@ -91,13 +70,21 @@ public function actionCreate()
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$temppassword = $model->password;
+		$temppassword2 = $model->password;;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
+			if($model->password and $model->password2 == '') // no password has been entered we wanted 
+			{
+				// set passwords to what they were
+				$model->password = $temppassword;
+				$model->password2 = $temppassword2;
+				
+			}
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -146,6 +133,8 @@ public function actionCreate()
 			'model'=>$model,
 		));
 	}
+	
+
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -174,4 +163,26 @@ public function actionCreate()
 			Yii::app()->end();
 		}
 	}
+	
+		public function actionUpdatePassword($id)
+	{
+		$model=$this->loadModel($id);
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			
+			if($form->validate())
+            {
+				// save user registration
+                $form->save();
+				$this->redirect(Yii::app()->user->returnUrl); //redirect to previous url	
+			}
+		}	
+		// display the registration form
+        $this->render('UpdatePassword',array('model'=>$model));
+		
+	}
+	
+
+	
 }

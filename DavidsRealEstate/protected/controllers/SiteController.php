@@ -107,4 +107,34 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	
+	private $_identity;
+	public function actionRegister()
+        {
+                $form=new User;
+				
+                // collect user input data
+                if(isset($_POST['User']))
+                {
+                        $form->attributes=$_POST['User']; // set all attributes with post values
+                        
+                        // NOTE Changes to any $form->value have to be performed BEFORE $form-validate() 
+                        // or else it won't save to the database. 
+                        
+                        
+                        // validate user input and redirect to previous page if valid
+                        if($form->validate())
+                        {                               
+                                // save user registration
+                                $form->save();
+								$this->redirect(Yii::app()->user->returnUrl); //redirect to previous url
+										
+                        }
+                }
+                // display the registration form
+                $this->render('register',array('form'=>$form));
+        }
+	
+
+	
 }
