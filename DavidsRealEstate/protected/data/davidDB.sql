@@ -28,7 +28,7 @@ CREATE TABLE tbl_user
 	surname VARCHAR(45) NULL,
     phoneNumber INTEGER NULL,
 	propertyOwned INTEGER NULL,
-	roles VARCHAR NOT NULL DEFAULT 'tennant', 
+	roles VARCHAR NOT NULL DEFAULT 'tenant', 
 	FOREIGN KEY(propertyOwned) REFERENCES tbl_propertylisting(propertyID)
 );
  
@@ -40,7 +40,14 @@ CREATE TABLE tbl_user
 CREATE TABLE tbl_propertylisting 
 (
 	propertyID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	address VARCHAR(255) NOT NULL,
+	streetName VARCHAR(255) NOT NULL,
+	streetNumber INTEGER NOT NULL,
+	streetType VARCHAR(255) NOT NULL,
+	suburb  VARCHAR(255) NOT NULL,
+	propertyType VARCHAR(255) NOT NULL,
+	furnished VARCHAR(255) NOT NULL,
+	postcode INTEGER NOT NULL,
+	state VARCHAR(255) NOT NULL,
 	rent DECIMAL(4,2) NOT NULL,
 	rentfreq VARCHAR(15) NOT NULL,
 	numBathroom INTEGER NULL,
@@ -51,11 +58,15 @@ CREATE TABLE tbl_propertylisting
 	status INTEGER NOT NULL,
     authorID INTEGER NOT NULL,
     imageID VARCHAR(255) NULL,
+	propertyManagerID INTEGER NULL,
 	tenantID INTEGER NULL,
 	numViews INTEGER NULL,
+	inspectionTime1 VARCHAR(255) NULL,
+	inspectionTime2 VARCHAR(255) NULL,
 	FOREIGN KEY(authorID) REFERENCES tbl_user(id),
 	FOREIGN KEY(imageID) REFERENCES tbl_gallery(imageID),
-	FOREIGN KEY(tenantID) REFERENCES tbl_tenants(tenantID)
+	FOREIGN KEY(tenantID) REFERENCES tbl_user(id),
+	FOREIGN KEY(propertyManagerID) REFERENCES tbl_user(id)
 );
 
 INSERT INTO tbl_lookup (name, type, code, position) VALUES ('Rented', 'PostStatus', 1, 1);
@@ -63,5 +74,5 @@ INSERT INTO tbl_lookup (name, type, code, position) VALUES ('For Rent', 'PostSta
 INSERT INTO tbl_lookup (name, type, code, position) VALUES ('Archived', 'PostStatus', 3, 3);
 
 
-INSERT INTO tbl_user (username, password, email, firstname, surname) VALUES ('demo', '$2a$10$JTJf6/XqC94rrOtzuF397OHa4mbmZrVTBOQCmYD9U.obZRUut4BoC', 'david@example.com', 'David', 'Davidson');
-INSERT INTO tbl_user (username, password, email, firstname, surname) VALUES ('admin', '$2a$13$M3/HNNEpkEjA85ng1dNKrOzj/SUZDuZxq7FuYdb/HVoWeK6CWPpPW', 'admin@example.com','John','Johnson');
+INSERT INTO tbl_user (username, password, email, firstname, surname, roles) VALUES ('demo', '$2a$10$JTJf6/XqC94rrOtzuF397OHa4mbmZrVTBOQCmYD9U.obZRUut4BoC', 'david@example.com', 'David', 'Davidson', 'owner');
+INSERT INTO tbl_user (username, password, email, firstname, surname, roles) VALUES ('admin', '$2a$13$M3/HNNEpkEjA85ng1dNKrOzj/SUZDuZxq7FuYdb/HVoWeK6CWPpPW', 'admin@example.com','John','Johnson', 'admin');

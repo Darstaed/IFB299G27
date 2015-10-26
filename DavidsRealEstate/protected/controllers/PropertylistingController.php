@@ -33,7 +33,7 @@ class PropertylistingController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'users'=>array('admin'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
@@ -72,9 +72,13 @@ class PropertylistingController extends Controller
             $uploadedFile=CUploadedFile::getInstance($model, 'imageID');
             $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
             $model->imageID = $fileName;
-            if($model->save())// we need to check if image was uploaded
+            if($model->save())
             {
-                $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
+				if($uploadedFile!=NULL) // did they upload an image
+				{
+					  $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
+				}
+                
                 $this->redirect('admin',array('model'=>$model));
             }
         }
@@ -94,14 +98,36 @@ class PropertylistingController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Propertylisting']))
 		{
-			$model->attributes=$_POST['Propertylisting'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->propertyID));
+		$rnd = rand(0,9999);  // generate random number between 0-9999
+		$model->attributes=$_POST['Propertylisting'];
+			
+		$uploadedFile=CUploadedFile::getInstance($model, 'imageID');
+		$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+		if($uploadedFile!=NULL)
+		{
+			$model->imageID = $fileName;
 		}
-
+		
+	
+		
+		if($model->save())
+		{
+			if($uploadedFile==NULL)
+			{
+				$this->redirect(array('view','id'=>$model->propertyID));
+			}
+			else
+			{
+				$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
+				$this->redirect(array('view','id'=>$model->propertyID));
+			}
+		}
+			
+			
+		}
+	
 		$this->render('update',array(
 			'model'=>$model,
 		));
@@ -202,25 +228,7 @@ class PropertylistingController extends Controller
 		}
 	}
 	
-	// I have a drop down menu populated with all tenants that have been created
-	// these tenants are from a tenant table in my database with propertyID that is not yet set
-	// if a user selects a particular tenant and clicks submit on the property listing I want that tenant
-	// to then be assigned that property id respectivley
-	
-	//protected function afterSave() 
-	//{
-		//parent::afterSave();
-		//Tenant::model()->updateTenantID($this->_oldTags, $this->tags)
-	//}
-	
-	
-	
-	//protected function afterDelete() // I want to make the tentants property ID not set
-	//{
-		//parent::afterDelete();
-		//Tenant::model()->deleteAll('tenantID='.$this->tenantID);
-	
-	//}
+
 	
 	
 	

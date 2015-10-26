@@ -17,8 +17,47 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'address'); ?>
-		<?php echo $form->textField($model,'address',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->label($model,'streetName'); ?>
+		<?php echo $form->textField($model,'streetName',array('size'=>60,'maxlength'=>255)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'streetNumber'); ?>
+		<?php echo $form->textField($model,'streetNumber'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'streetType'); ?>
+		<?php echo $form->textField($model,'streetType',array('size'=>60,'maxlength'=>255)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'suburb'); ?>
+		<?php echo $form->textField($model,'suburb',array('size'=>60,'maxlength'=>255)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'propertyType'); ?>
+		<?php echo $form->dropDownList($model,'propertyType',  array('house' => 'house', 'townhouse' => 'townhouse', 'apartment' => 'apartment', 'duplex' => 'duplex', 'cottage' => 'cottage')); ?>
+		<?php echo $form->error($model,'propertyType'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'furnished'); ?>
+		<?php echo $form->dropDownList($model,'furnished',  array('no' => 'no', 'yes' => 'yes')); ?>
+		<?php echo $form->error($model,'furnished'); ?>
+	</div>
+
+
+	<div class="row">
+		<?php echo $form->label($model,'postcode'); ?>
+		<?php echo $form->textField($model,'postcode'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'state'); ?>
+		<?php echo $form->dropDownList($model,'state',  array('QLD' => 'QLD', 'NSW' => 'NSW', 'TAS' => 'TAS', 'SA' => 'SA', 'NT' => 'NT', 'WA' => 'WA')); ?>
+		<?php echo $form->error($model,'state'); ?>
 	</div>
 
 	<div class="row">
@@ -28,38 +67,25 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'rentfreq'); ?>
-		<?php echo $form->textField($model,'rentfreq',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->textField($model,'rentfreq',array('size'=>15,'maxlength'=>15)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,"Minimum ".'numBathroom'); ?>
+		<?php echo $form->label($model,'numBathroom'); ?>
 		<?php echo $form->textField($model,'numBathroom'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,"Minimum ".'numBedroom'); ?>
+		<?php echo $form->label($model,'numBedroom'); ?>
 		<?php echo $form->textField($model,'numBedroom'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,"Minimum ".'numCarPorts'); ?>
+		<?php echo $form->label($model,'numCarPorts'); ?>
 		<?php echo $form->textField($model,'numCarPorts'); ?>
 	</div>
 
-	<div class="row">
-		<?php //echo $form->label($model,'createTime'); ?>
-		<?php //echo $form->textField($model,'createTime'); ?>
-	</div>
 
-	<div class="row">
-		<?php //echo $form->label($model,'updateTime'); ?>
-		<?php //echo $form->textField($model,'updateTime'); ?>
-	</div>
-	
-	<div class="row">
-	<?php //echo $form->labelEx($model,'status'); ?>
-	<?php //echo $form->dropDownList($model,'status',Lookup::items('PostStatus')); ?>
-	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

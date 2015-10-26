@@ -20,6 +20,16 @@
  */
 class User extends CActiveRecord
 {
+    // define repeat password variable & verify code variable
+    public $password2;
+    public $verifyCode;
+	
+	// this is for our update password
+	public $new_password;
+	public $new_password_repeat;
+	
+	
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -28,26 +38,53 @@ class User extends CActiveRecord
 		return '{{user}}';
 	}
 
+	public function getFullName()
+{
+    return $this->firstname.' '.$this->surname.' ('.$this->id.')';
+}
+
+	
+	
 	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
 	{
+		
+		
+		
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password', 'required'),
-			array('phoneNumber, propertyOwned', 'numerical', 'integerOnly'=>true),
-			array('username', 'length', 'max'=>16),
-			array('password', 'length', 'max'=>32),
-			array('email', 'length', 'max'=>255),
-			array('firstname, surname', 'length', 'max'=>45),
-			array('roles', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, email, firstname, surname, phoneNumber, propertyOwned, roles', 'safe', 'on'=>'search'),
+		 array('username','length','max'=>32),
+         // convert username to lower case
+         array('username', 'filter', 'filter'=>'strtolower'),
+         array('password','length','max'=>64, 'min'=>6),
+         array('password2','length','max'=>64, 'min'=>6),
+         // compare password to repeated password
+         array('password', 'compare', 'compareAttribute'=>'password2'), 
+         array('email','length','max'=>256),
+         // make sure email is a valid email
+         array('email','email'),
+         // make sure username and email are unique
+         array('username, email', 'unique'), 
+			
+		array('username, password, email, firstname, surname, verifyCode', 'required'),
+		array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
+		
+		
+		
+		array('phoneNumber, propertyOwned', 'numerical', 'integerOnly'=>true),
+
+		array('firstname, surname', 'length', 'max'=>45),
+		array('roles', 'safe'),
+		// The following rule is used by search().
+		// @todo Please remove those attributes that should not be searched.
+		array('id, username, password, email, firstname, surname, phoneNumber, propertyOwned, roles', 'safe', 'on'=>'search'),
 		);
 	}
+	
+
 
 	/**
 	 * @return array relational rules.
@@ -71,14 +108,26 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'username' => 'Username',
 			'password' => 'Password',
+			'password2' => 'Confirm Password',
 			'email' => 'Email',
 			'firstname' => 'Firstname',
 			'surname' => 'Surname',
 			'phoneNumber' => 'Phone Number',
 			'propertyOwned' => 'Property Owned',
 			'roles' => 'Roles',
+			'verifyCode'=>'Verification Code',
 		);
 	}
+	
+	
+	public function safeAttributes()
+    {
+        return array
+		(
+			'username, password, password2, email, question, answer, verifyCode',
+        );
+    }
+	
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -139,25 +188,15 @@ class User extends CActiveRecord
     return uniqid('',true);
 	}
 	
+	public $pass;
 	public $plain_password;
 	
 	public function beforeSave()
     {
-                if (parent::beforeSave())
-				{
-					if($this->isNewRecord)
-					{
-					$this->plain_password = $this->password;
-					$this->password = $this->hashPassword($this->password);
-					return true;
-					}else
-					{
-						//$this->plain_password = $this->password;
-					}
-				}else
-				{
-					return false;
-				}
+		$plain_password = $this->password;
+	    $pass = $this->hashPassword($this->password);
+        $this->password = $pass;
+        return true;
     }
 
 }

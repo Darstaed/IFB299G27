@@ -3,10 +3,14 @@
 /* @var $model Propertylisting */
 
 $this->breadcrumbs=array(
-	'Property listings'=>array('index'),
+	'Propertylistings'=>array('index'),
 	'Manage',
 );
 
+$this->menu=array(
+	array('label'=>'Property listings', 'icon' => 'icon-list', 'url'=>array('index')),
+	array('label'=>'Create Property Listing', 'icon'=>'pencil', 'url'=>array('create')),
+);
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -22,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Property listings</h1>
+<h1>Manage Propertylistings</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -42,27 +46,31 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'propertyID',
-		'address',
+		'streetName',
+		'streetNumber',
+		'streetType',
+		'suburb',
+		'propertyType',
+		/*
+		'furnished',
+		'postcode',
+		'state',
 		'rent',
 		'rentfreq',
 		'numBathroom',
 		'numBedroom',
 		'numCarPorts',
-		array(
-			'name'=>'createTime',
-			'type'=>'datetime',
-			'filter'=>false,
-			),
-		array(
-			'name'=>'updateTime',
-			'type'=>'datetime',
-			'filter'=>false,
-			),
-		array(
-            'name'=>'status',
-            'value'=>'Lookup::item("PostStatus",$data->status)',
-            'filter'=>Lookup::items('PostStatus'),
-        ),
+		'createTime',
+		'updateTime',
+		'status',
+		'authorID',
+		'imageID',
+		'propertyManagerID',
+		'tenantID',
+		'numViews',
+		'inspectionTime1',
+		'inspectionTime2',
+		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

@@ -20,12 +20,54 @@
 
 	<?php echo $form->errorSummary($model); ?>
 		
+	<div class="row">
+		<?php echo $form->labelEx($model,'streetNumber'); ?>
+		<?php echo $form->textField($model,'streetNumber'); ?>
+		<?php echo $form->error($model,'streetNumber'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'streetName'); ?>
+		<?php echo $form->textField($model,'streetName',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'streetName'); ?>
+	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'address'); ?>
-		<?php echo $form->textField($model,'address',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'address'); ?>
+		<?php echo $form->labelEx($model,'streetType'); ?>
+		<?php echo $form->textField($model,'streetType',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'streetType'); ?>
 	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'suburb'); ?>
+		<?php echo $form->textField($model,'suburb'); ?>
+		<?php echo $form->error($model,'suburb'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'postcode'); ?>
+		<?php echo $form->textField($model,'postcode'); ?>
+		<?php echo $form->error($model,'postcode'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'state'); ?>
+		<?php echo $form->dropDownList($model,'state',  array('QLD' => 'QLD', 'NSW' => 'NSW', 'TAS' => 'TAS', 'SA' => 'SA', 'NT' => 'NT', 'WA' => 'WA')); ?>
+		<?php echo $form->error($model,'state'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'propertyType'); ?>
+		<?php echo $form->dropDownList($model,'propertyType',  array('house' => 'house', 'townhouse' => 'townhouse', 'apartment' => 'apartment', 'duplex' => 'duplex', 'cottage' => 'cottage')); ?>
+		<?php echo $form->error($model,'propertyType'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'furnished'); ?>
+		<?php echo $form->dropDownList($model,'furnished',  array('no' => 'no', 'yes' => 'yes')); ?>
+		<?php echo $form->error($model,'furnished'); ?>
+	</div>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'rent'); ?>
@@ -60,7 +102,6 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'imageID'); ?>
-		<?php //echo $form->textField($model,'imageID',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo CHtml::activeFileField($model, 'imageID'); ?>
 		<?php echo $form->error($model,'imageID'); ?>
 	</div>
@@ -68,6 +109,48 @@
 	<div class="row">
 	<?php echo $form->labelEx($model,'status'); ?>
 	<?php echo $form->dropDownList($model,'status',Lookup::items('PostStatus')); ?>
+	</div>
+	
+	
+	<div class="row">
+	<?php echo $form->labelEx($model,'inspectionTime1'); ?>
+	<?php 
+		$this->widget('application.extensions.timepicker.timepicker', array(
+			'model'=>$model,
+			'name'=>'inspectionTime1',
+		));
+	?>
+</div>
+	
+	<div class="row">
+	<?php echo $form->labelEx($model,'inspectionTime2'); ?>
+	<?php 
+		$this->widget('application.extensions.timepicker.timepicker', array(
+			'model'=>$model,
+			'name'=>'inspectionTime2',
+		));
+	?>
+</div>
+	
+	
+	
+	
+	<div class="row">
+	<?php echo $form->labelEx($model,'tenantID'); ?>
+	<?php $myRole = 'tenant';				
+	echo $form->dropDownList($model, 'tenantID', CHtml::listData(User::model()->findAllByAttributes((array('roles'=>$myRole))) ,'id','fullName'), 
+	array('empty' => '--please select--') ); 
+	?>
+	<?php echo $form->error($model,'tenantID'); ?>
+	</div>
+	
+	<div class="row">
+	<?php echo $form->labelEx($model,'propertyManagerID'); ?>
+	<?php $myRole = 'property manager';				
+	echo $form->dropDownList($model, 'propertyManagerID', CHtml::listData(User::model()->findAllByAttributes((array('roles'=>$myRole))) ,'id','fullName'), 
+	array('empty' => '--please select--') ); 
+	?>
+	<?php echo $form->error($model,'propertyManagerID'); ?>
 	</div>
 	
 

@@ -7,8 +7,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
+	array('label'=>'User Account Management'),
+	array('label'=>'Create User Accounts', 'icon'=>'pencil', 'url'=>array('site/register')),
+	array('label'=>'Manage User Accounts', 'icon'=>'book', 'url'=>array('admin')),
 );
 ?>
 

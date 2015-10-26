@@ -11,9 +11,9 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
 	array('label'=>'Property Listing Management'),
-	array('label'=>'List Property listing', 'url'=>array('index')),
+	array('label'=>'Property listings', 'icon' => 'icon-list', 'url'=>array('index')),
 	array('label'=>'Create Property Listing', 'icon'=>'pencil', 'url'=>array('create')),
-	array('label'=>'View Property listing', 'url'=>array('view', 'id'=>$model->propertyID)),
+	array('label'=>'View Property listing', 'icon' => ' icon-list-alt', 'url'=>array('view', 'id'=>$model->propertyID)),
 	array('label'=>'Manage Property Listings', 'icon'=>'book', 'url'=>array('admin')),
 );
 ?>

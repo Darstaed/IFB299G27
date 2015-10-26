@@ -22,5 +22,10 @@ class WebUser extends CWebUser
         }
         // allow access if the operation request is the current user's role
         return ($operation === $role);
+		
+		if($user->id == $this->id)
+		{
+				return true;
+		}
     }
 }

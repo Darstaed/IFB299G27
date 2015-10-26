@@ -1,11 +1,8 @@
-<?php
-/* @var $this UserController */
-/* @var $model User */
-/* @var $form CActiveForm */
-?>
+<?php $this->pageTitle=Yii::app()->name . ' - Register'; ?>
 
-<div class="form">
 
+
+<div class="yiiForm">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'user-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -14,49 +11,49 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
+<?php echo CHtml::beginForm(); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<?php echo CHtml::errorSummary($model); ?>
 
-	<?php echo $form->errorSummary($model); ?>
+<div class="simple">
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>16,'maxlength'=>16)); ?>
-		<?php echo $form->error($model,'username'); ?>
-	</div>
+<?php echo CHtml::activeLabel($model,'username', array('style'=>'width:150px;')); ?>
+<?php echo CHtml::activeTextField($model,'username') ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password',array('size'=>32,'maxlength'=>32)); ?>
-		<?php echo $form->error($model,'password'); ?>
-	</div>
+<div class="simple">
+<?php echo CHtml::activeLabel($model,'password', array('style'=>'width:150px;')); ?>
+<?php echo CHtml::activePasswordField($model,'password') ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
+<div class="simple">
+<?php echo CHtml::activeLabel($model,'Confirm Password', array('style'=>'width:150px;')); ?>
+<?php echo CHtml::activePasswordField($model,'password2') ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'firstname'); ?>
-		<?php echo $form->textField($model,'firstname',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'firstname'); ?>
-	</div>
+<div class="simple">
+<?php echo CHtml::activeLabel($model,'email', array('style'=>'width:150px;')); ?>
+<?php echo CHtml::activeTextField($model,'email') ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'surname'); ?>
-		<?php echo $form->textField($model,'surname',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'surname'); ?>
-	</div>
+<div class="simple">
+<?php echo CHtml::activeLabel($model,'firstname', array('style'=>'width:150px;')); ?>
+<?php echo CHtml::activeTextField($model,'firstname') ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'phoneNumber'); ?>
-		<?php echo $form->textField($model,'phoneNumber'); ?>
-		<?php echo $form->error($model,'phoneNumber'); ?>
-	</div>
+<div class="simple">
+<?php echo CHtml::activeLabel($model,'surname', array('style'=>'width:150px;')); ?>
+<?php echo CHtml::activeTextField($model,'surname') ?>
+</div>
+
+<div class="simple">
+<?php echo CHtml::activeLabel($model,'phoneNumber', array('style'=>'width:150px;')); ?>
+<?php echo CHtml::activeTextField($model,'phoneNumber') ?>
+</div>
 
 
-	<div class="row">
+
+<div class="simple">
 	<?php
 		if(Yii::app()->user->getName()=='admin')// user is an admin
 		{
@@ -68,12 +65,31 @@
 	?>
 	</div>
 	
-	
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+
+<br/>
+
+<br/>
+
+<?php if(CCaptcha::checkRequirements()): ?>
+<div class="row">
+    <?php echo $form->labelEx($model,'verifyCode'); ?>
+    <div>
+    <?php $this->widget('CCaptcha'); ?>
+    <?php echo $form->textField($model,'verifyCode'); ?>
+    </div>
+    <div class="hint">Please enter the letters as they are shown in the image above.
+    <br/>Letters are not case-sensitive.</div>
+    <?php echo $form->error($model,'verifyCode'); ?>
+</div>
+<?php endif; ?>
+
+<div class="action">
+<?php echo CHtml::submitButton('Register'); ?>
+</div>
+
+<?php echo CHtml::endForm(); ?>
+
+</div><!-- yiiForm -->
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
