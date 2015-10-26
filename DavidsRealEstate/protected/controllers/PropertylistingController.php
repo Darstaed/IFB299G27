@@ -32,6 +32,10 @@ class PropertylistingController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('indexpm'),
+				'roles'=>array('property manager'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('admin'),
 			),
@@ -160,6 +164,31 @@ class PropertylistingController extends Controller
 	
 		$criteria=new CDbCriteria(array(
 		'condition'=>'status='.Propertylisting::STATUS_PUBLISHED,
+		'with'=>array('author'),
+		));
+	
+		$dataProvider=new CActiveDataProvider('Propertylisting', array('pagination'=>array('pageSize'=>5,), 'criteria'=>$criteria));
+		
+		
+		$this->render('index',array(
+        'model'=>$model)
+		);
+	}
+	
+		/**
+	 * Lists all models.
+	 */
+	public function actionIndexpm()
+	{
+		$model=new Propertylisting('search');
+		$model->unsetAttributes();  // clear any default values
+		$model->status = 2;
+		$model->propertyManagerID = Yii::app()->user->id;
+		if(isset($_GET['Propertylisting']))
+			$model->attributes=$_GET['Propertylisting'];
+	
+		$criteria=new CDbCriteria(array(
+		'condition'=>array('status='.Propertylisting::STATUS_PUBLISHED, 'propertyManagerID='. Yii::app()->user->id),
 		'with'=>array('author'),
 		));
 	

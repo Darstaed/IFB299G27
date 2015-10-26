@@ -43,7 +43,7 @@ public function accessRules()
         ),
 		array('allow',
             'actions'=>array('update','captcha'),
-            'users'=>array('*'),
+            'users'=>array('@'),
         ),
         array('deny',  // deny all users
             'users'=>array('*'),
@@ -70,25 +70,34 @@ public function accessRules()
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$temppassword = $model->password;
-		$temppassword2 = $model->password;;
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$old_user = $model;
+		$model->password = NULL;
+		$model->password2 = NULL;
+		
 
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->password and $model->password2 == '') // no password has been entered we wanted 
-			{
-				// set passwords to what they were
-				$model->password = $temppassword;
-				$model->password2 = $temppassword2;
-				
-			}
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			
+		if(empty($model->password) and empty($model->password2))
+		{
+			$model->password = $old_user->password;
+			$model->password2 = $old_user->password2;
 		}
-
+		
+		if($model->save())
+		{
+			
+			if(Yii::app()->user->checkAccess('admin'))
+			{
+				$this->redirect(array('view','id'=>$model->id));
+			}else
+			{
+				$this->redirect(Yii::app()->user->returnUrl);
+			}
+										
+        }
+	}
 		$this->render('update',array(
 			'model'=>$model,
 		));

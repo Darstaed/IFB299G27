@@ -5,14 +5,20 @@
 $this->breadcrumbs=array(
 	'Propertylistings',
 );
-
+if(Yii::app()->user->checkAccess('admin'))
+{
 $this->menu=array(
 	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
 	array('label'=>'Property Listing Management'),
 	array('label'=>'Create Property Listing', 'icon'=>'pencil', 'url'=>array('create')),
 	array('label'=>'Manage Property Listings', 'icon'=>'book', 'url'=>array('admin')),
 );
-
+}else
+{
+	$this->menu=array(
+	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
+	);
+}
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
     $('.search-form').toggle();
@@ -47,7 +53,11 @@ $('.search-form form').submit(function(){
 </div>
 
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php
+
+if(Yii::app()->user->checkAccess('admin') or Yii::app()->user->checkAccess('property manager'))
+{
+ $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$model->search(),
 	'itemView'=>'_view',
 	'id'=>'proplistview',       // must have id corresponding to js above
@@ -60,6 +70,22 @@ $('.search-form form').submit(function(){
 		'updateTime',
 		),
 )); 
-
+} else
+{
+	 $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$model->search(),
+	'itemView'=>'_view',
+	'id'=>'proplistview',       // must have id corresponding to js above
+    'sortableAttributes'=>array(
+        'propertyID',
+		'rent',
+		'numBathroom',
+		'numBedroom',
+		'numCarPorts',
+		'updateTime',
+		'numViews',
+		),
+)); 
+}
 ?>
 

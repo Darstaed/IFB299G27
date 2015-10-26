@@ -6,7 +6,8 @@ $this->breadcrumbs=array(
 	'Property listings'=>array('index'),
 	$model->streetNumber . " " . ucfirst($model->streetName) . " ". ucfirst($model->streetType) .  ", " . $model->state . " " . $model->postcode,
 );
-
+if(Yii::app()->user->checkAccess('admin'))
+{
 $this->menu=array(
 	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
 	array('label'=>'Property Listing Management'),
@@ -15,6 +16,13 @@ $this->menu=array(
 	array('label'=>'Delete Property listing','icon'=>'icon-trash', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->propertyID),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Property Listings', 'icon'=>'book', 'url'=>array('admin')),
 );
+} else
+{
+	$this->menu=array(
+	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
+	);
+}
+
 ?>
 
 
@@ -126,6 +134,7 @@ $model->save();
 			
 			echo  "Tenant: " . ucfirst($model->tenant->firstname) . ' ' . ucfirst($model->tenant->surname);
 		}
+		echo  "Number of views:" . " ". $model-> numViews;
 	}
 ?>
 

@@ -43,6 +43,10 @@
 	<?php echo CHtml::encode($data->numCarPorts); ?>
 	<br />
 	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('numViews')); ?>:</b>
+	<?php echo CHtml::encode($data->numViews); ?>
+	<br />
+	
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updateTime')); ?>:</b>
 	<?php echo  strftime("%d-%m-%Y, %H:%M:%S", CHtml::encode($data->updateTime)); ?>

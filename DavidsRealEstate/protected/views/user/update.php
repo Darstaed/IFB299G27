@@ -7,7 +7,8 @@ $this->breadcrumbs=array(
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
-
+if(Yii::app()->user->checkAccess('admin'))
+{
 $this->menu=array(
 	array('label'=>CHtml::encode(Yii::app()->user->name), 'icon'=>'user'),
 	array('label'=>'User Account Management'),
@@ -16,6 +17,7 @@ $this->menu=array(
 	array('label'=>'View User Account', 'icon' => ' icon-list-alt', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'Manage User Accounts', 'icon'=>'book', 'url'=>array('admin')),
 );
+}
 ?>
 
 <h1>Update User <?php echo $model->username; ?></h1>

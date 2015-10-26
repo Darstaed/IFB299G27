@@ -59,8 +59,8 @@ class User extends CActiveRecord
 		 array('username','length','max'=>32),
          // convert username to lower case
          array('username', 'filter', 'filter'=>'strtolower'),
-         array('password','length','max'=>64, 'min'=>6),
-         array('password2','length','max'=>64, 'min'=>6),
+         array('password','length','max'=>64, 'min'=>4),
+         array('password2','length','max'=>64, 'min'=>4),
          // compare password to repeated password
          array('password', 'compare', 'compareAttribute'=>'password2'), 
          array('email','length','max'=>256),
@@ -68,8 +68,11 @@ class User extends CActiveRecord
          array('email','email'),
          // make sure username and email are unique
          array('username, email', 'unique'), 
+		 
+		array('password', 'required', 'on' => 'insert'),
+		array('password2', 'required', 'on' => 'insert'),
 			
-		array('username, password, email, firstname, surname, verifyCode', 'required'),
+		array('username, email, firstname, surname, verifyCode', 'required'),
 		array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 		
 		
@@ -80,7 +83,7 @@ class User extends CActiveRecord
 		array('roles', 'safe'),
 		// The following rule is used by search().
 		// @todo Please remove those attributes that should not be searched.
-		array('id, username, password, email, firstname, surname, phoneNumber, propertyOwned, roles', 'safe', 'on'=>'search'),
+		array('id, username, email, firstname, surname, phoneNumber, propertyOwned, roles', 'safe', 'on'=>'search'),
 		);
 	}
 	
@@ -195,6 +198,7 @@ class User extends CActiveRecord
     {
 		$plain_password = $this->password;
 	    $pass = $this->hashPassword($this->password);
+		$password2 = $this->hashPassword($this->password2);
         $this->password = $pass;
         return true;
     }

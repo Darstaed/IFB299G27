@@ -9,7 +9,17 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 
 )); 
 
+if(Yii::app()->user->checkAccess('property manager'))
+{
+	$this->widget('bootstrap.widgets.TbMenu', array(
+    'type'=>'list',
+    'items'=>array(
 
+		array('label'=>'Property Listing Management'),
+		array('label'=>'View listings assigned to me', 'icon'=>'icon-list', 'url'=>array('propertylisting/indexpm')),
+    ),
+	)); 
+}
 
 
 if(Yii::app()->user->checkAccess('admin'))
